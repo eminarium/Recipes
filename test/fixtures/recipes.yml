@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  likes: 1
+  dislikes: 1
+  is_halal: false
+  is_kosher: false
+  is_vegetarian: false
+
+two:
+  title: MyString
+  description: MyText
+  likes: 1
+  dislikes: 1
+  is_halal: false
+  is_kosher: false
+  is_vegetarian: false
