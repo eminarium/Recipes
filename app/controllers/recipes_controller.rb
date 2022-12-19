@@ -46,6 +46,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :likes, :dislikes, :is_halal, :is_kosher, :is_vegetarian)
+    params.require(:recipe).permit(:title, :brief_info, :description, :likes, :dislikes, :is_halal, :is_kosher, :is_vegetarian)
   end
 end

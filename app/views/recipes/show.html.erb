@@ -2,7 +2,7 @@
   <div class="card-header"><h5><%= @recipe.title %></h5>
   </div>
   <div class="card-body">
-    <p class="card-text"><%= @recipe.description %></p>
+    <p class="card-text"><%= @recipe.brief_info %></p>
 
     <div class="row">
 
@@ -34,6 +34,10 @@
       </div>
 
     </div>    
+
+    <div class="trix-content">
+      <%= @recipe.description %>
+    </div>
 
   </div
 
