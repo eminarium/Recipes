@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-header"><h5><%= @recipe.title %></h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= @recipe.description %></p>
+  </div
+  <div class="card-footer">
+    <%= link_to "List", recipes_path, class: "btn btn-primary" %>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div>
+  <div class="row mt-5">
+    <div class="col-10">
+      <h1 class="display-3">List of Recipes</h1>
+    </div>
+    <div class="col-2">
+      <%= link_to "New Recipe", new_recipe_path, class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+  <div class="list-group">
+    <% @recipes.each do |recipe| %>
+      <%= render 'recipe', recipe: recipe %>
+    <% end %>
+  </div>
+</div>
