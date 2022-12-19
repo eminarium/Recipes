@@ -22,6 +22,21 @@
       <% end %>
     </div>
   </div>
+  
+  <div class="row mb-3">
+    <div class="col border pt-3 pb-2 text-center">
+      <%= form.label "Halal ?", class: "form-label me-2" %>
+      <%= form.check_box :is_halal %>
+    </div>
+    <div class="col border pt-3 pb-2 text-center">
+      <%= form.label "Kosher ?", class: "form-label me-2" %>
+      <%= form.check_box :is_kosher %>
+    </div>
+    <div class="col border pt-3 pb-2 text-center">
+      <%= form.label "Veg ?", class: "form-label me-2" %>
+      <%= form.check_box :is_vegetarian %>
+    </div>
+  </div>
 
   <div class="mb-3">
     <%= form.submit "Kabul Et", class: "btn btn-success" %>
