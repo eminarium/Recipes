@@ -1,9 +1,42 @@
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 32rem;">
   <div class="card-header"><h5><%= @recipe.title %></h5>
   </div>
   <div class="card-body">
     <p class="card-text"><%= @recipe.description %></p>
+
+    <div class="row">
+
+      <div class="col">
+        Halal 
+        <% if @recipe.is_halal? %>
+          <i class="bi bi-check-circle-fill ms-1" style="color: green"></i>
+        <% else %>
+          <i class="bi bi-x-circle-fill ms-1" style="color: red"></i>
+        <% end %>
+      </div>
+
+      <div class="col">
+        Kosher 
+        <% if @recipe.is_kosher? %>
+          <i class="bi bi-check-circle-fill ms-1" style="color: green"></i>
+        <% else %>
+          <i class="bi bi-x-circle-fill ms-1" style="color: red"></i>
+        <% end %>
+      </div>
+
+      <div class="col">
+        Veg
+        <% if @recipe.is_vegetarian? %>
+          <i class="bi bi-check-circle-fill ms-1" style="color: green"></i>
+        <% else %>
+          <i class="bi bi-x-circle-fill ms-1" style="color: red"></i>
+        <% end %>
+      </div>
+
+    </div>    
+
   </div
+
   <div class="card-footer">
     <%= link_to "List", recipes_path, class: "btn btn-primary" %>
   </div>
