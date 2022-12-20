@@ -1,5 +1,8 @@
 class Recipe < ApplicationRecord
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  
   self.per_page = 10
 
   has_rich_text :description
