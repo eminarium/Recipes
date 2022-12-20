@@ -109,6 +109,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.11.0)
     execjs (2.8.1)
+    faker (3.0.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
@@ -268,6 +270,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  faker
   figaro
   image_processing (~> 1.2)
   importmap-rails
