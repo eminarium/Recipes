@@ -5,5 +5,8 @@ class Recipe < ApplicationRecord
   validates :title, presence: true
   validates :brief_info, presence: true
   validates :likes, :dislikes, presence: true
-  # validates :user_id, presence: true
+  validates :user_id, presence: true
+
+  # ASSOCIATIONS
+  belongs_to :user
 end

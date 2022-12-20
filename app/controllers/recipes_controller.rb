@@ -3,7 +3,11 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.order(:created_at)
+    if user_signed_in?
+      @recipes = current_user.recipes.order(:created_at)
+    else
+      @recipes = Recipe.order(:created_at)
+    end
   end
 
   def show
@@ -14,7 +18,8 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    # @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
       redirect_to @recipe, notice: "Recipe was successfully created."
