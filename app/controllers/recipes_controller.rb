@@ -5,9 +5,9 @@ class RecipesController < ApplicationController
 
   def index
     if user_signed_in?
-      @recipes = current_user.recipes.order(:created_at)
+      @recipes = current_user.recipes.paginate(page: params[:page]).order(:created_at)
     else
-      @recipes = Recipe.order(:created_at)
+      @recipes = Recipe.paginate(page: params[:page]).order(:created_at)
     end
   end
 

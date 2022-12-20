@@ -16,8 +16,24 @@
     </div>
   </div>
   <div class="list-group">
+
+    <div class="digg_pagination mb-3">
+      <div class="page_info">
+        <%= page_entries_info @recipes %>
+      </div>
+      <%= will_paginate @recipes, container: false %>
+    </div>
+
     <% @recipes.each do |recipe| %>
       <%= render 'recipe', recipe: recipe %>
     <% end %>
+
+    <div class="digg_pagination">
+      <div class="page_info">
+        <%= page_entries_info @recipes %>
+      </div>
+      <%= will_paginate @recipes, container: false %>
+    </div>
+
   </div>
 </div> 

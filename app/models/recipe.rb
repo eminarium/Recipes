@@ -1,5 +1,7 @@
 class Recipe < ApplicationRecord
 
+  self.per_page = 10
+
   has_rich_text :description
 
   validates :title, presence: true
