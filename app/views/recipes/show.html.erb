@@ -53,17 +53,19 @@
         <% end %>
       </div>
 
-      <div class="col">
-        <%= link_to edit_recipe_path(@recipe), class: "btn btn-warning" do %>
-          Edit <i class="bi bi-pencil-square ms-2"></i>
-        <% end %>
-      </div>
+      <% if user_signed_in? and @recipe.user == current_user %>
+        <div class="col">
+          <%= link_to edit_recipe_path(@recipe), class: "btn btn-warning" do %>
+            Edit <i class="bi bi-pencil-square ms-2"></i>
+          <% end %>
+        </div>
 
-      <div class="col">
-        <%= link_to @recipe, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" do %>
-          Delete <i class="bi bi-x-square ms-2"></i>
-        <% end %>
-      </div>
+        <div class="col">
+          <%= link_to @recipe, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" do %>
+            Delete <i class="bi bi-x-square ms-2"></i>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 

@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if user_signed_in?
@@ -18,7 +19,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    # @recipe = Recipe.new(recipe_params)
     @recipe = current_user.recipes.build(recipe_params)
 
     if @recipe.save
