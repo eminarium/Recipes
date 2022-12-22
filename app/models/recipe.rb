@@ -7,6 +7,8 @@ class Recipe < ApplicationRecord
 
   has_rich_text :description
 
+  # VALIDATIONS
+
   validates :title, presence: true
   validates :brief_info, presence: true
   validates :likes, :dislikes, presence: true
@@ -14,4 +16,5 @@ class Recipe < ApplicationRecord
 
   # ASSOCIATIONS
   belongs_to :user
+  has_many :ingredients, dependent: :destroy
 end
