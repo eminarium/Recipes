@@ -1,6 +1,7 @@
 class Instruction < ApplicationRecord
 
-  after_create_commit { broadcast_prepend_to "stories" }
+  # after_create_commit { broadcast_prepend_to "instructions" }
+  # after_update_commit { broadcast_replace_to "instructions" }
 
   acts_as_list scope: :recipe
 

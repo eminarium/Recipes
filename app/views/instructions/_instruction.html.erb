@@ -1,4 +1,20 @@
 <%= turbo_frame_tag instruction do %>
-  <h3><%= instruction.content %></h3>
-  <p><%= instruction.position %></p>
+  <%= turbo_frame_tag dom_id(instruction, :edit) do %>
+    <div class="row">
+      <div class="col">
+        <p><%= instruction.content %></p>
+      </div>
+      <div class="col">
+        <p><%= instruction.position %></p>
+      </div>
+
+      <div class="col">
+        <%= link_to "Edit", 
+                    edit_recipe_instruction_path(@recipe, instruction), 
+                    # data: { turbo_frame: dom_id(instruction, :edit) },
+                    class: "btn btn-warning"  %>
+      </div>
+      <hr />
+    </div>
+  <% end %>
 <% end %>

@@ -1,16 +1,13 @@
 <%= turbo_stream_from "instructions" %>
 
-<div class="container">
 <div class="row">
   <div class="col-6">
+
     <div class="card" style="width: 32rem;">
-      <div class="card-header"><h5><%= @recipe.title %></h5>
-      </div>
+      <div class="card-header"><h5><%= @recipe.title %></h5></div>
       <div class="card-body">
         <p class="card-text"><%= @recipe.brief_info %></p>
-
         <hr />
-
         <div class="row">
 
           <div class="col">
@@ -44,11 +41,9 @@
 
         <hr />
 
-        <div class="trix-content">
-          <%= @recipe.description %>
-        </div>
+        <div class="trix-content"><%= @recipe.description %></div>
 
-      </div
+      </div>
 
       <div class="card-footer">
         <div class="row justify-content-around m-3">
@@ -76,20 +71,20 @@
 
     </div>
   </div>
-
+  
   <div class="col-6">
     Instructions
     <%= link_to "New Instruction", 
                 new_recipe_instruction_path(@recipe),
                 data: { turbo_frame: dom_id(Instruction.new) },
                 class: "btn btn-primary" %>
+
+    <%= turbo_frame_tag Instruction.new %>
+
+    <%= turbo_frame_tag "instructions" do %>
+      <%= render @instructions, partial: "instructions/instruction" %>
+    <% end %>                  
   </div>
 
-  <%= turbo_frame_tag Instruction.new %>
 
-  <%= turbo_frame_tag "instructions" do %>
-    <%= render @instructions, partial: "instructions/instruction" %>
-  <% end %>
-
-</div>
 </div>

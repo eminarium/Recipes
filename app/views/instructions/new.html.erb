@@ -1,4 +1,4 @@
-<%= turbo_frame_tag @instruction do %>
+<%= turbo_frame_tag dom_id(Instruction.new) do %>
   <h5>Add new Instruction</h5>
   <%= render "form" %>
 <% end %>

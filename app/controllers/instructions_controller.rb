@@ -1,6 +1,6 @@
 class InstructionsController < ApplicationController
 
-  before_action :set_recipe, only: [:new, :create]
+  before_action :set_recipe, only: [:new, :edit, :create, :update]
   before_action :set_instruction, only: [:edit, :update, :destroy]
 
   def new
@@ -23,6 +23,13 @@ class InstructionsController < ApplicationController
   end
 
   def update
+    if @instruction.update(instruction_params)
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = "Instruction was successfully update!" }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
