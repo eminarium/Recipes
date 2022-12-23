@@ -1,0 +1,6 @@
+<%= form_for([@recipe, @instruction]) do |form| %>
+  <%= form.label :content, class: "form-label" %>
+  <%= form.text_area :content, class: "form-control" %>
+  <%= form.submit "OK", class: "btn btn-success" %>
+  <%= link_to "Cancel", @recipe, class: "btn btn-warning" %>
+<% end %>

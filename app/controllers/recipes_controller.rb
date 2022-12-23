@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @instructions = @recipe.instructions
   end
 
   def new

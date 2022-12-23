@@ -1,72 +1,95 @@
-<div class="card" style="width: 32rem;">
-  <div class="card-header"><h5><%= @recipe.title %></h5>
-  </div>
-  <div class="card-body">
-    <p class="card-text"><%= @recipe.brief_info %></p>
+<%= turbo_stream_from "instructions" %>
 
-    <hr />
-
-    <div class="row">
-
-      <div class="col">
-        Halal 
-        <% if @recipe.is_halal? %>
-          <i class="bi bi-check-circle-fill ms-1" style="color: green"></i>
-        <% else %>
-          <i class="bi bi-x-circle-fill ms-1" style="color: red"></i>
-        <% end %>
+<div class="container">
+<div class="row">
+  <div class="col-6">
+    <div class="card" style="width: 32rem;">
+      <div class="card-header"><h5><%= @recipe.title %></h5>
       </div>
+      <div class="card-body">
+        <p class="card-text"><%= @recipe.brief_info %></p>
 
-      <div class="col">
-        Kosher 
-        <% if @recipe.is_kosher? %>
-          <i class="bi bi-check-circle-fill ms-1" style="color: green"></i>
-        <% else %>
-          <i class="bi bi-x-circle-fill ms-1" style="color: red"></i>
-        <% end %>
-      </div>
+        <hr />
 
-      <div class="col">
-        Veg
-        <% if @recipe.is_vegetarian? %>
-          <i class="bi bi-check-circle-fill ms-1" style="color: green"></i>
-        <% else %>
-          <i class="bi bi-x-circle-fill ms-1" style="color: red"></i>
-        <% end %>
-      </div>
+        <div class="row">
 
-    </div>    
+          <div class="col">
+            Halal 
+            <% if @recipe.is_halal? %>
+              <i class="bi bi-check-circle-fill ms-1" style="color: green"></i>
+            <% else %>
+              <i class="bi bi-x-circle-fill ms-1" style="color: red"></i>
+            <% end %>
+          </div>
 
-    <hr />
+          <div class="col">
+            Kosher 
+            <% if @recipe.is_kosher? %>
+              <i class="bi bi-check-circle-fill ms-1" style="color: green"></i>
+            <% else %>
+              <i class="bi bi-x-circle-fill ms-1" style="color: red"></i>
+            <% end %>
+          </div>
 
-    <div class="trix-content">
-      <%= @recipe.description %>
-    </div>
+          <div class="col">
+            Veg
+            <% if @recipe.is_vegetarian? %>
+              <i class="bi bi-check-circle-fill ms-1" style="color: green"></i>
+            <% else %>
+              <i class="bi bi-x-circle-fill ms-1" style="color: red"></i>
+            <% end %>
+          </div>
 
-  </div
+        </div>    
 
-  <div class="card-footer">
-    <div class="row justify-content-around m-3">
-      <div class="col">
-        <%= link_to recipes_path, class: "btn btn-primary" do %>
-          List <i class="bi bi-list-ul ms-1"></i>
-        <% end %>
-      </div>
+        <hr />
 
-      <% if user_signed_in? and @recipe.user == current_user %>
-        <div class="col">
-          <%= link_to edit_recipe_path(@recipe), class: "btn btn-warning" do %>
-            Edit <i class="bi bi-pencil-square ms-2"></i>
-          <% end %>
+        <div class="trix-content">
+          <%= @recipe.description %>
         </div>
 
-        <div class="col">
-          <%= link_to @recipe, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" do %>
-            Delete <i class="bi bi-x-square ms-2"></i>
+      </div
+
+      <div class="card-footer">
+        <div class="row justify-content-around m-3">
+          <div class="col">
+            <%= link_to recipes_path, class: "btn btn-primary" do %>
+              List <i class="bi bi-list-ul ms-1"></i>
+            <% end %>
+          </div>
+
+          <% if user_signed_in? and @recipe.user == current_user %>
+            <div class="col">
+              <%= link_to edit_recipe_path(@recipe), class: "btn btn-warning" do %>
+                Edit <i class="bi bi-pencil-square ms-2"></i>
+              <% end %>
+            </div>
+
+            <div class="col">
+              <%= link_to @recipe, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" do %>
+                Delete <i class="bi bi-x-square ms-2"></i>
+              <% end %>
+            </div>
           <% end %>
         </div>
-      <% end %>
+      </div>
+
     </div>
   </div>
 
+  <div class="col-6">
+    Instructions
+    <%= link_to "New Instruction", 
+                new_recipe_instruction_path(@recipe),
+                data: { turbo_frame: dom_id(Instruction.new) },
+                class: "btn btn-primary" %>
+  </div>
+
+  <%= turbo_frame_tag Instruction.new %>
+
+  <%= turbo_frame_tag "instructions" do %>
+    <%= render @instructions, partial: "instructions/instruction" %>
+  <% end %>
+
+</div>
 </div>

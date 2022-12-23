@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   root "recipes#index"
 
-  resources :recipes
+  resources :recipes do
+    resources :instructions, except: [:index, :show]
+  end
 end

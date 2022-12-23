@@ -1,0 +1,5 @@
+<%= turbo_stream.prepend "instructions" do %>
+  <%= render @instruction %>
+<% end %>
+
+<%= turbo_stream.replace Instruction.new %>
