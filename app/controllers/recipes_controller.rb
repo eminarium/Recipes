@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @instructions = @recipe.instructions
+    @instructions = @recipe.instructions.order(:position)
   end
 
   def new

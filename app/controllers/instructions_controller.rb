@@ -1,7 +1,7 @@
 class InstructionsController < ApplicationController
 
-  before_action :set_recipe, only: [:new, :edit, :create, :update]
-  before_action :set_instruction, only: [:edit, :update, :destroy]
+  before_action :set_recipe, only: [:new, :edit, :create, :update, :lift, :drop]
+  before_action :set_instruction, only: [:edit, :update, :destroy, :lift, :drop]
 
   def new
     @instruction = @recipe.instructions.build
@@ -19,6 +19,24 @@ class InstructionsController < ApplicationController
       end
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def lift
+    @instruction.move_higher
+    @lower_item = @instruction.lower_item
+
+    respond_to do |format|
+      format.turbo_stream { flash.now[:notice] = "Instructions were reordered..." }
+    end
+  end
+
+  def drop
+    @instruction.move_lower
+    @higher_item = @instruction.higher_item
+
+    respond_to do |format|
+      format.turbo_stream { flash.now[:notice] = "Instructions were reordered..." }
     end
   end
 

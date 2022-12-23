@@ -1,0 +1,14 @@
+<%= turbo_stream.remove @instruction %>
+<%= turbo_stream.remove @higher_item %>
+
+<% if previous_instruction = @higher_item.previous_instruction %>
+  <%= turbo_stream.after previous_instruction do %>
+    <%= render @higher_item %>
+    <%= render @instruction %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.prepend "instructions" do %>
+    <%= render @higher_item %>
+    <%= render @instruction %>
+  <% end %>
+<% end %>

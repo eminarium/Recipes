@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   root "recipes#index"
 
   resources :recipes do
-    resources :instructions, except: [:index, :show]
+    resources :instructions, except: [:index, :show] do
+      member do
+        put "lift", to: "instructions#lift"
+        put "drop", to: "instructions#drop"
+      end
+    end
   end
 end

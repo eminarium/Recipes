@@ -1,5 +1,5 @@
-<%= turbo_stream.prepend "instructions" do %>
+<%= turbo_stream.append "instructions" do %>
   <%= render @instruction %>
 <% end %>
 
-<%= turbo_stream.replace Instruction.new %>
+<%= turbo_stream.replace dom_id(Instruction.new) %>
