@@ -24,6 +24,12 @@
       <%= will_paginate @recipes, container: false %>
     </div>
 
+    <%= form_tag recipes_path, method: :get do %>
+      <%= label_tag "Recipes per page" %>
+      <%= select_tag :per_page, options_for_select([5, 10, 15, 20, 25, 50], params[:per_page])  %>
+      <%= submit_tag "OK", name: "" %>
+    <% end %>
+
     <% @recipes.each do |recipe| %>
       <%= render 'recipe', recipe: recipe %>
     <% end %>

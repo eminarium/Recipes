@@ -4,10 +4,14 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    unless params[:per_page].present?
+      params[:per_page] = 10
+    end
+
     if user_signed_in?
-      @recipes = current_user.recipes.paginate(page: params[:page]).order(:created_at)
+      @recipes = current_user.recipes.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
     else
-      @recipes = Recipe.paginate(page: params[:page]).order(:created_at)
+      @recipes = Recipe.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
     end
   end
 
