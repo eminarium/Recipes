@@ -73,15 +73,18 @@
   </div>
   
   <div class="col-6">
-    Instructions
-    <%= link_to "New Instruction", 
-                new_recipe_instruction_path(@recipe),
-                data: { turbo_frame: dom_id(Instruction.new) },
-                class: "btn btn-primary" %>
+    <p class="display-6">Instructions</p>
+    <% if current_user && @recipe.user == current_user %>
+      <%= link_to "New Instruction", 
+                  new_recipe_instruction_path(@recipe),
+                  data: { turbo_frame: dom_id(Instruction.new) },
+                  class: "btn btn-primary" %>
+    <% end %>
 
     <%= turbo_frame_tag Instruction.new %>
 
     <%= turbo_frame_tag "instructions" do %>
+      <%= "There are no instructions yet..." if @instructions.empty? %>
       <%= render @instructions, partial: "instructions/instruction" %>
     <% end %>                  
   </div>
