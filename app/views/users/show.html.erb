@@ -1,0 +1,9 @@
+<div>
+  <h5 class="display-5">Recipes shared by <%= @user.email %></h5>
+
+  <% @recipes.each do |recipe| %>
+    <%= render recipe, partial: 'recipes/recipe', recipe: recipe %> 
+  <% end %>
+
+
+</div>

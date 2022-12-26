@@ -1,10 +1,10 @@
 <%= turbo_frame_tag recipe do %>
-<div class="list-group-item list-group-item-action mt-3">
+<div class="list-group-item list-group-item-action mt-2 mb-2">
   <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1"><%= recipe.title %></h5>
     <small>
       3 days ago | 
-      <%= recipe.user.email %>
+      <%= link_to recipe.user.email, user_path(recipe.user), target: "_top" %>
     </small>
   </div>
   <div class="mb-1"><%= recipe.brief_info %></div>
