@@ -78,7 +78,8 @@
       <%= link_to "New Instruction", 
                   new_recipe_instruction_path(@recipe),
                   data: { turbo_frame: dom_id(Instruction.new) },
-                  class: "btn btn-primary" %>
+                  class: "btn btn-primary mb-1" %>
+      <hr/>
     <% end %>
 
     <%= turbo_frame_tag Instruction.new %>
