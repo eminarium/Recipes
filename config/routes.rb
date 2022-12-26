@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   put "users/:id/unfollow", to: "relationship#destroy", as: "unfollow_user"
 
   resources :recipes do
+    # get 'shared', to: "recipes#shared", on: :collection
+
     resources :instructions, except: [:index, :show] do
       member do
         put "lift", to: "instructions#lift"

@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
       params[:per_page] = 10
     end
 
-    if user_signed_in?
+    if user_signed_in? && !params[:shared]
       @recipes = current_user.recipes.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
     else
       @recipes = Recipe.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
