@@ -3,7 +3,8 @@
   <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1"><%= recipe.title %></h5>
     <small>
-      3 days ago
+      3 days ago | 
+      <%= recipe.user.email %>
     </small>
   </div>
   <div class="mb-1"><%= recipe.brief_info %></div>
