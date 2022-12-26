@@ -1,9 +1,20 @@
 <div>
-  <h5 class="display-5">Recipes shared by <%= @user.email %></h5>
 
-  <% @recipes.each do |recipe| %>
-    <%= render recipe, partial: 'recipes/recipe', recipe: recipe %> 
-  <% end %>
+  <div class="d-flex justify-content-between">
+
+    <h3 class="my-3">Recipes shared by <span class="badge bg-secondary rounded-pill"><%= @user.email %></span></h3>
+
+    <% if current_user and current_user.id != @user.id %>
+      <% if current_user.followees.include?(@user) %>
+        <%= button_to "Unfollow", unfollow_user_path(@user), method: :delete, class: "btn btn-primary mt-3" %>
+      <% else %>
+        <%= button_to "Follow", follow_user_path(@user), class: "btn btn-primary mt-3" %>
+      <% end %>
+    <% end %>
+
+  </div>
+
+  <%= render @recipes %>
 
 
 </div>

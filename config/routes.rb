@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :users
   root "recipes#index"
 
-  post "users/:id/follow", to: "relationship#create", as: "follow_user"
-  put "users/:id/unfollow", to: "relationship#destroy", as: "unfollow_user"
+  post "users/:id/follow", to: "relationships#create", as: "follow_user"
+  delete "users/:id/unfollow", to: "relationships#destroy", as: "unfollow_user"
 
   resources :recipes do
     # get 'shared', to: "recipes#shared", on: :collection

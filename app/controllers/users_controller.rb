@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!
 
   def show
-    @recipes = @user.recipes
+    @recipes = @user.recipes.includes(:user)
   end
 
   private
