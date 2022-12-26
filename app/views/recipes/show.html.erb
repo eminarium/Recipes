@@ -1,9 +1,9 @@
 <%= turbo_stream_from "instructions" %>
 
 <div class="row">
-  <div class="col-6">
+  <div class="col-md-6">
 
-    <div class="card" style="width: 32rem;">
+    <div class="card">
       <div class="card-header"><h5><%= @recipe.title %></h5></div>
       <div class="card-body">
         <p class="card-text"><%= @recipe.brief_info %></p>
@@ -72,7 +72,7 @@
     </div>
   </div>
   
-  <div class="col-6">
+  <div class="col-md-6">
     <p class="display-6">Instructions</p>
     <% if current_user && @recipe.user == current_user %>
       <%= link_to "New Instruction", 

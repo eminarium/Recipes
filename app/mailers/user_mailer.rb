@@ -10,4 +10,18 @@ class UserMailer < ApplicationMailer
 
     bootstrap_mail(to: @user.email, subject: "Welcome to Recipes.com !")
   end
+
+  def follow_notification(relationship)
+    @follower = relationship.follower
+    @followee = relationship.followee
+
+    bootstrap_mail(to: @followee.email, subject: "You're being followed...")
+  end
+
+  def unfollow_notification(relationship)
+    @follower = relationship.follower
+    @followee = relationship.followee
+
+    bootstrap_mail(to: @followee.email, subject: "You've been unfollowed...")
+  end
 end
