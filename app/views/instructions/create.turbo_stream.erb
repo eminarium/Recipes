@@ -2,4 +2,4 @@
   <%= render @instruction %>
 <% end %>
 
-<%= turbo_stream.update dom_id(Instruction.new), "" %>
+<%= turbo_stream.replace dom_id(Instruction.new) %>

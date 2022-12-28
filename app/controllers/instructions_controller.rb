@@ -51,11 +51,6 @@ class InstructionsController < ApplicationController
   end
 
   def destroy
-    @instruction.destroy
-
-    respond_to do |format|
-      format.turbo_stream { flash.now[:notice] = "Instruction was successfully destroyed !!!" }
-    end
   end
 
   private

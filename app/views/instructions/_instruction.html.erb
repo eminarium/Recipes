@@ -17,9 +17,6 @@
                       class: "btn btn-warning"  %>
         </div>
         <div class="col">
-          <%= button_to "Delete", [@recipe, instruction], class: "btn btn-danger", method: :delete, form: { data: { turbo_confirm: "Are you sure?" }} %>
-        </div>
-        <div class="col">
           <%= link_to "Up", lift_recipe_instruction_path(@recipe, instruction), data: { turbo_method: :put }, class: "btn btn-success" %>
         </div>
         <div class="col">
