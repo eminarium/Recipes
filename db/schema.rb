@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_24_144629) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_28_173401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,12 +72,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_144629) do
     t.index ["recipe_id"], name: "index_instructions_on_recipe_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "likeable_type", null: false
+    t.bigint "likeable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "title"
     t.text "brief_info"
     t.text "description"
-    t.integer "likes", default: 0, null: false
-    t.integer "dislikes", default: 0, null: false
     t.boolean "is_halal", default: false, null: false
     t.boolean "is_kosher", default: false, null: false
     t.boolean "is_vegetarian", default: false, null: false
@@ -111,5 +119,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_144629) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "instructions", "recipes"
+  add_foreign_key "likes", "users"
   add_foreign_key "recipes", "users"
 end

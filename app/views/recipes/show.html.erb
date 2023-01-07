@@ -3,6 +3,14 @@
 <div class="row">
   <div class="col-md-6">
 
+    <% if current_user && current_user.id != @recipe.user.id %>
+      <% if current_user.liked_recipes.include?(@recipe) %>
+        <%= button_to "Unlike", unlike_recipe_path(@recipe), method: :delete, class: "btn btn-success" %>
+      <% else %>
+        <%= button_to "Like", like_recipe_path(@recipe), class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+
     <div class="card">
       <div class="card-header"><h5><%= @recipe.title %></h5></div>
       <div class="card-body">

@@ -6,6 +6,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # ASSOCIATIONS
+  # has_many :likes
+  # has_many :liked_recipes, through: :likes, source: :likeable, source_type: 'Recipe'
+
+  has_many :likes
+  has_many :liked_recipes, through: :likes, source: :likeable, source_type: 'Recipe'
+  
   has_many :recipes
 
   has_many :followed_users, foreign_key: :follower_id, class_name: "Relationship"

@@ -11,10 +11,11 @@ class Recipe < ApplicationRecord
 
   validates :title, presence: true
   validates :brief_info, presence: true
-  validates :likes, :dislikes, presence: true
+  # validates :likes, :dislikes, presence: true
   validates :user_id, presence: true
 
   # ASSOCIATIONS
+  has_many :likes, as: :likeable
   belongs_to :user
   has_many :instructions, dependent: :destroy
 end

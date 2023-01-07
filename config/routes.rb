@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   resources :recipes do
     # get 'shared', to: "recipes#shared", on: :collection
 
+    member do
+      post "like", to: "likes#create"
+      delete "unlike", to: "likes#destroy"
+    end
+
     resources :instructions, except: [:index, :show] do
       member do
         put "lift", to: "instructions#lift"
