@@ -5,3 +5,4 @@ import "@popperjs/core"
 import "bootstrap"
 import "trix"
 import "@rails/actiontext"
+import "@fortawesome/fontawesome-free";

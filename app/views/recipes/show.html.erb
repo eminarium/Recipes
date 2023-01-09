@@ -5,9 +5,13 @@
 
     <% if current_user && current_user.id != @recipe.user.id %>
       <% if current_user.likes?(@recipe) %>
-        <%= button_to "Unlike", unlike_recipe_path(@recipe), method: :delete, class: "btn btn-success" %>
+        <%= button_to unlike_recipe_path(@recipe), method: :delete, class: "btn btn-danger mb-2" do %>
+          Unlike <i class="fa-solid fa-heart"></i>
+        <% end %>
       <% else %>
-        <%= button_to "Like", like_recipe_path(@recipe), class: "btn btn-success" %>
+        <%= button_to like_recipe_path(@recipe), class: "btn btn-outline-danger mb-2" do %>
+          Like <i class="fa-regular fa-heart"></i>
+        <% end %>
       <% end %>
     <% end %>
 
