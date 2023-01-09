@@ -8,8 +8,14 @@ class RecipesController < ApplicationController
       params[:per_page] = 10
     end
 
-    if user_signed_in? && !params[:shared]
-      @recipes = current_user.recipes.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
+    if user_signed_in?
+      if params[:liked]
+        @recipes = current_user.liked_recipes.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
+      elsif params[:shared]
+        @recipes = Recipe.where('user_id != ?', current_user.id).paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
+      else
+        @recipes = current_user.recipes.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
+      end
     else
       @recipes = Recipe.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
     end
