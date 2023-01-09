@@ -24,4 +24,21 @@ class UserMailer < ApplicationMailer
 
     bootstrap_mail(to: @followee.email, subject: "You've been unfollowed...")
   end
+
+  def recipe_like_notification(like)
+    @liker = like.user
+    @recipe = like.likeable
+    @recipe_owner = @recipe.user
+
+    bootstrap_mail(to: @recipe_owner.email, subject: "Your recipe has been liked...")
+  end
+
+  def recipe_unlike_notification(like)
+    @liker = like.user
+    @recipe = like.likeable
+    @recipe_owner = @recipe.user
+
+    bootstrap_mail(to: @recipe_owner.email, subject: "Your recipe has been liked...")
+  end
+
 end

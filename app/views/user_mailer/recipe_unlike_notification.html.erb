@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="alert alert-secondary mt-3" role="alert">
+    <h3>Hi <%= @recipe_owner.email %>, so, so, sorry, your recipe has just been unliked</h3>
+  </div>
+
+  <div class="card mt-3">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <p>We are sorry to notify you that your recipe <strong><%= @recipe.title %></strong> has just been unliked by <%= @liker.email %>.</p>
+      <br />
+      <h3>Don't loose your hope</h3>
+      <h4>Go on to create and share interesting content for others...</h4>
+      <br />
+      <a href="/" class="btn btn-primary">Go to Recipes</a>
+    </div>
+  </div>
+</div>
