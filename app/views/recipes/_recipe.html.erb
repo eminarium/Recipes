@@ -5,6 +5,9 @@
     <small>
       3 days ago | 
       <%= link_to recipe.user.email, user_path(recipe.user), target: "_top" %>
+      <% if current_user && current_user.likes?(recipe) %>
+      | <span class="badge bg-primary"> I Like it </span>
+      <% end %>
     </small>
   </div>
   <div class="mb-1"><%= recipe.brief_info %></div>

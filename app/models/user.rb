@@ -27,4 +27,8 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver_now
   end
 
+  def likes?(recipe)
+    liked_recipes.include?(recipe)
+  end
+
 end
