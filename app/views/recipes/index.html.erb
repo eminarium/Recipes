@@ -2,10 +2,16 @@
   <div class="row mt-5">
     <div class="col-10">
       <h1 class="display-3">
-        <% if user_signed_in? && !params[:shared] %>
-          My Recipes
+        <% if user_signed_in? %>
+          <% if params[:shared] %>
+            Shared Recipes
+          <% elsif params[:liked] %>
+            My Favorite
+          <% else %>
+            My Recipes
+          <% end %>
         <% else %>
-          Shared Recipes
+          All Recipes
         <% end %>
       </h1>
     </div>
