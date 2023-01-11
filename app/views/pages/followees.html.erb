@@ -11,7 +11,10 @@
                         <h5 class="mb-1"><%= followee.email %></h5>
                     <% end %>
                 </div>
-                <div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <%= link_to followee, class: 'btn btn-primary' do %>
+                      <i class="fa-solid fa-info"></i>
+                    <% end %>
                     <%= button_to t('buttons.unfollow'), unfollow_user_path(followee), class: "btn btn-primary", method: :delete %>
                 </div>
             </div>
