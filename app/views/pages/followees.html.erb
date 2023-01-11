@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
     <div class="list-group mt-3">
         <div class="container-fluid bg-dark text-light rounded-3 p-2 d-flex justify-content-between">
-            <h1 class="display-5 mt-3 ms-2"><%= t('followees.followees') %></h1>
+            <h1 class="display-5 mt-3 ms-2">Who I follow</h1>
         </div>
 
         <% @followees.each do |followee| %>
