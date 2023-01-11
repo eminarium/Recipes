@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+    <div class="list-group mt-3">
+        <div class="container-fluid bg-dark text-light rounded-3 p-2 d-flex justify-content-between">
+            <h1 class="display-5 mt-3 ms-2"><%= t('followees.followees') %></h1>
+        </div>
+
+        <% @followees.each do |followee| %>
+            <div class="list-group-item d-flex justify-content-between ms-2 mt-3 rounded-3">
+                <div>
+                    <%= link_to followee, class: "list-group-item-action mb-1", style: "text-decoration: none" do %>
+                        <h5 class="mb-1"><%= followee.email %></h5>
+                    <% end %>
+                </div>
+                <div>
+                    <%= button_to t('buttons.unfollow'), unfollow_user_path(followee), class: "btn btn-primary", method: :delete %>
+                </div>
+            </div>
+        <% end %>
+
+        <% if @followees.count.zero? %>
+            <h3 class="display-6 mt-3">You aren't following anybody at the moment...</h3>
+        <% end %>
+    </div>
+<% end %>

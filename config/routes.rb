@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get 'pages/followers'
+  get 'pages/followees'
   resources :relationships
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get 'followees', to: "pages#followees", as: :followees
+  get 'followers', to: 'pages#followers', as: :followers
 
   resources :users
   root "recipes#index"
