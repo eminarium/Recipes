@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="alert alert-secondary mt-3" role="alert">
+    <h3>Hi <%= @follower.email %>, a new recipe for you ...</h3>
+  </div>
+
+  <div class="card mt-3">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <p>We are happy to notify you that <strong><%= @recipe_owner.email %></strong> has just added a new recipe.</p>
+      <br />
+      <h6>Take a look at it: <%= link_to @recipe.title, recipe_url(@recipe) %></h6>
+      <h4>Keep looking forward to interesting recipes from ones you follow...</h4>
+      <br />
+      <a href="/" class="btn btn-primary">Go to Recipes</a>
+    </div>
+  </div>
+</div>

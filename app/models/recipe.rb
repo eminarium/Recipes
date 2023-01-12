@@ -7,6 +7,14 @@ class Recipe < ApplicationRecord
 
   has_rich_text :description
 
+
+  # CALLBACKS
+  after_create :notify_recipe_owner_followers
+
+  def notify_recipe_owner_followers
+    FollowersNewRecipeNotifierJob.perform_later(self)
+  end
+
   # VALIDATIONS
 
   validates :title, presence: true

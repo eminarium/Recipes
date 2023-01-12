@@ -41,4 +41,12 @@ class UserMailer < ApplicationMailer
     bootstrap_mail(to: @recipe_owner.email, subject: "Your recipe has been liked...")
   end
 
+  def follower_new_recipe_notification(recipe, follower)
+    @recipe_owner = recipe.user
+    @follower = follower
+    @recipe = recipe
+
+    bootstrap_mail(to: @follower.email, subject: "New Recipe from you follower...")
+  end
+
 end
