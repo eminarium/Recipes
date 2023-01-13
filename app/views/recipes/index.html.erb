@@ -20,13 +20,13 @@
         <%= link_to new_recipe_path, class: "btn btn-primary mt-3 me-3" do %>
           New Recipe <i class="fa-solid fa-plus"></i>
         <% end %>
-        <%= link_to recipes_path(request.params.except(:action, :controller, :shared, :liked)), class: "btn btn-warning mt-3 me-3" do %>
+        <%= link_to recipes_path(request.params.except(:action, :controller, :type)), class: "btn btn-warning mt-3 me-3" do %>
           My Recipes <i class="fa-solid fa-user-large"></i>
         <% end %>
-        <%= link_to recipes_path(request.params.except(:action, :controller, :liked).merge(shared: true)), class: "btn btn-success mt-3 me-3" do %>
+        <%= link_to recipes_path(request.params.except(:action, :controller).merge(type: :shared)), class: "btn btn-success mt-3 me-3" do %>
           Shared <i class="fa-solid fa-retweet"></i>
         <% end %>
-        <%= link_to recipes_path(request.params.except(:action, :controller, :shared).merge(liked: true)), class: "btn btn-danger mt-3" do %>
+        <%= link_to recipes_path(request.params.except(:action, :controller).merge(type: :liked)), class: "btn btn-danger mt-3" do %>
           My Favorite <i class="fa-solid fa-heart"></i>
         <% end %>
       <% end %>
