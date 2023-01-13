@@ -7,20 +7,23 @@
 
       <% if current_user && @recipe.user == current_user %>
         <div class="col">
-          <p><%= instruction.position %></p>
-        </div>
+          <div class="row">
+            <div class="col">
+              <%= link_to edit_recipe_instruction_path(@recipe, instruction), 
+                          data: { turbo_frame: dom_id(instruction, :edit) },
+                          class: "btn btn-warning" do %>
+                <i class="fa-solid fa-pencil"></i>
+              <% end %>
 
-        <div class="col">
-          <%= link_to "Edit", 
-                      edit_recipe_instruction_path(@recipe, instruction), 
-                      data: { turbo_frame: dom_id(instruction, :edit) },
-                      class: "btn btn-warning"  %>
-        </div>
-        <div class="col">
-          <%= link_to "Up", lift_recipe_instruction_path(@recipe, instruction), data: { turbo_method: :put }, class: "btn btn-success" %>
-        </div>
-        <div class="col">
-          <%= link_to "Down", drop_recipe_instruction_path(@recipe, instruction), data: { turbo_method: :put }, class: "btn btn-success" %>
+              <%= link_to lift_recipe_instruction_path(@recipe, instruction), data: { turbo_method: :put }, class: "btn btn-success" do %>
+                <i class="fa-solid fa-arrow-up"></i>
+              <% end %>
+
+              <%= link_to drop_recipe_instruction_path(@recipe, instruction), data: { turbo_method: :put }, class: "btn btn-success" do %>
+                <i class="fa-solid fa-arrow-down"></i>
+              <% end %>
+            </div>
+          </div>
         </div>
       <% end %>
 
