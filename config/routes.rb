@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'followers', to: 'pages#followers', as: :followers
 
   resources :users
+  get "profile", to: "users#profile", as: "profile"
   root "recipes#index"
 
   post "users/:id/follow", to: "relationships#create", as: "follow_user"
