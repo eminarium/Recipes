@@ -1,0 +1,16 @@
+current directory: /home/mdzine/Practice/Recipes/Recipes/vendor/bundle/ruby/3.0.0/gems/debug-1.7.0/ext/debug
+/usr/share/rvm/rubies/ruby-3.0.2/bin/ruby -I /usr/share/rvm/rubies/ruby-3.0.2/lib/ruby/3.0.0 -r ./siteconf20230117-33593-mbgn6k.rb extconf.rb
+creating Makefile
+
+current directory: /home/mdzine/Practice/Recipes/Recipes/vendor/bundle/ruby/3.0.0/gems/debug-1.7.0/ext/debug
+make DESTDIR\= clean
+
+current directory: /home/mdzine/Practice/Recipes/Recipes/vendor/bundle/ruby/3.0.0/gems/debug-1.7.0/ext/debug
+make DESTDIR\=
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/mdzine/Practice/Recipes/Recipes/vendor/bundle/ruby/3.0.0/gems/debug-1.7.0/ext/debug
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20230117-33593-1pfm4w/debug
