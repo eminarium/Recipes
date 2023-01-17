@@ -34,11 +34,17 @@
   </div>
   <div class="list-group">
 
-    <div class="digg_pagination mb-3">
+    <div class="apple_pagination mb-3">
       <div class="page_info">
         <%= page_entries_info @recipes %>
       </div>
+      <%= link_to :action => 'index', :page => 1, per_page: params[:per_page] do %>
+        <i class="fa-solid fa-backward-fast"></i>
+      <% end %>
       <%= will_paginate @recipes, container: false %>
+      <%= link_to :action => 'index', :page => @recipes.total_pages, per_page: params[:per_page] do %>
+        <i class="fa-solid fa-forward-fast"></i>
+      <% end %>
     </div>
 
     <%= form_tag recipes_path, method: :get do %>
@@ -51,7 +57,7 @@
       <%= render 'recipe', recipe: recipe %>
     <% end %>
 
-    <div class="digg_pagination">
+    <div class="apple_pagination mb-3">
       <div class="page_info">
         <%= page_entries_info @recipes %>
       </div>
