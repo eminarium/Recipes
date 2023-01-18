@@ -22,6 +22,9 @@ class Recipe < ApplicationRecord
   validates :user_id, presence: true
 
   # ASSOCIATIONS
+  has_many :cookings
+  has_many :cooked_users, through: :cookings
+  
   has_many :likes, as: :likeable
   belongs_to :user
   has_many :instructions, dependent: :destroy

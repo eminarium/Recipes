@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # ASSOCIATIONS
-  # has_many :likes
-  # has_many :liked_recipes, through: :likes, source: :likeable, source_type: 'Recipe'
+  has_many :cookings
+  has_many :cooked_recipes, through: :cookings
 
   has_many :likes
   has_many :liked_recipes, through: :likes, source: :likeable, source_type: 'Recipe'
