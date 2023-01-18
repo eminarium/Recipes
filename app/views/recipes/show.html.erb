@@ -4,15 +4,32 @@
   <div class="col-md-6">
 
     <% if current_user && current_user.id != @recipe.user.id %>
-      <% if current_user.likes?(@recipe) %>
-        <%= button_to unlike_recipe_path(@recipe), method: :delete, class: "btn btn-danger mb-2" do %>
-          Unlike <i class="fa-solid fa-heart"></i>
-        <% end %>
-      <% else %>
-        <%= button_to like_recipe_path(@recipe), class: "btn btn-outline-danger mb-2" do %>
-          Like <i class="fa-regular fa-heart"></i>
-        <% end %>
-      <% end %>
+      <div class="row">
+        <div class="col-md-3">
+          <% if current_user.likes?(@recipe) %>
+            <%= button_to unlike_recipe_path(@recipe), method: :delete, class: "btn btn-danger mb-2" do %>
+              Unlike <i class="fa-solid fa-heart"></i>
+            <% end %>
+          <% else %>
+            <%= button_to like_recipe_path(@recipe), class: "btn btn-outline-danger mb-2" do %>
+              Like <i class="fa-regular fa-heart"></i>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="col-md-6">
+          <% if current_user.cooked?(@recipe) %>
+            <%= button_to unmark_cooked_recipe_path(@recipe), method: :delete, class: "btn btn-primary mb-2" do %>
+              Unmark Cooked <i class="fa-solid fa-kitchen-set"></i>
+            <% end %>
+          <% else %>
+            <%= button_to mark_cooked_recipe_path(@recipe), class: "btn btn-outline-primary mb-2" do %>
+              Mark Cooked <i class="fa-solid fa-kitchen-set"></i>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
     <% end %>
 
     <div class="card">

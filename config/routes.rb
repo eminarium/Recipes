@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'pages/followers'
-  get 'pages/followees'
-  resources :relationships
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -24,6 +22,9 @@ Rails.application.routes.draw do
     member do
       post "like", to: "likes#create"
       delete "unlike", to: "likes#destroy"
+
+      post "mark_cooked", to: "cookings#create"
+      delete "unmark_cooked", to: "cookings#destroy"
     end
 
     resources :instructions, except: [:index, :show] do

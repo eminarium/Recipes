@@ -6,8 +6,11 @@
       3 days ago | 
       <%= link_to recipe.user.email, user_path(recipe.user), target: "_top" %>
       <% if current_user && current_user.likes?(recipe) %>
-      | <span class="badge bg-danger"> <i class="fa-solid fa-heart"></i> </span>
+      | <span class="badge bg-danger"> <i class="fa-solid fa-heart" style="font-size: 14pt"></i> </span>
       <% end %>
+      <% if current_user && current_user.cooked?(recipe) %>
+      | <span class="badge bg-secondary"> <i class="fa-solid fa-kitchen-set" style="font-size: 14pt"></i> </span>
+      <% end %>      
     </small>
   </div>
   <div class="mb-1"><%= recipe.brief_info %></div>

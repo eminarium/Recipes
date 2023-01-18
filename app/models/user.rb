@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   # ASSOCIATIONS
   has_many :cookings
-  has_many :cooked_recipes, through: :cookings
+  has_many :cooked_recipes, through: :cookings, source: :recipe
 
   has_many :likes
   has_many :liked_recipes, through: :likes, source: :likeable, source_type: 'Recipe'
@@ -31,4 +31,7 @@ class User < ApplicationRecord
     liked_recipes.include?(recipe)
   end
 
+  def cooked?(recipe)
+    cooked_recipes.include?(recipe)
+  end
 end
