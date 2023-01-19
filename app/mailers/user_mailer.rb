@@ -49,4 +49,20 @@ class UserMailer < ApplicationMailer
     bootstrap_mail(to: @follower.email, subject: "New Recipe from you follower...")
   end
 
+  def mark_cooked_notification(cooking)
+    @recipe_owner = cooking.recipe.user
+    @recipe = cooking.recipe
+    @user = cooking.user
+
+    bootstrap_mail(to: @user.email, subject: "Your recipe #{@recipe.title} has been marked cooked by someone...")
+  end
+
+  def unmark_cooked_notification(cooking)
+    @recipe_owner = cooking.recipe.user
+    @recipe = cooking.recipe
+    @user = cooking.user
+
+    bootstrap_mail(to: @user.email, subject: "Your recipe #{@recipe.title} has been unmarked cooked by someone...")
+  end
+
 end

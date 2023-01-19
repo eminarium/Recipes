@@ -7,4 +7,16 @@ class Cooking < ApplicationRecord
   # ASSOCIATIONS
   belongs_to :user
   belongs_to :recipe
+
+  # CALLBACKS
+  after_create :notify_recipe_marked_cooked
+  after_destroy :notify_recipe_unmarked_cooked
+
+  def notify_recipe_marked_cooked
+    UserMailer.unmark_cooked_notification(self).deliver_now
+  end
+
+  def notify_recipe_unmarked_cooked
+    UserMailer.mark_cooked_notification(self).deliver_now
+  end
 end
