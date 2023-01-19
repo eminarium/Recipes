@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'followees', to: "pages#followees", as: :followees
   get 'followers', to: 'pages#followers', as: :followers
 
+  resources :lists
   resources :users
   get "profile", to: "users#profile", as: "profile"
   root "recipes#index"

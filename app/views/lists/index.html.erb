@@ -1,0 +1,10 @@
+<% if current_user %>
+  <div class="list-group mt-3">
+    <div class="container-fluid bg-dark text-light rounded-3 p-2 d-flex justify-content-between">
+      <h1 class="display-5 mt-3 ms-2">My Lists</h1>
+      <%= link_to "New List", new_list_path, class: "btn btn-primary my-4 me-3" %>
+    </div>
+  </div>
+
+  <%= render @lists %>
+<% end %>

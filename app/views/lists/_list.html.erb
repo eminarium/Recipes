@@ -1,0 +1,18 @@
+<div class="list-group-item d-flex justify-content-between ms-2 mt-3 rounded-2">
+  <div>
+    <%= link_to list, class: "list-group-item-action mb-1", style: "text-decoration: none" do %>
+      <%= list.title %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to list, class: "btn btn-primary" do %>
+      <i class="fa-solid fa-info"></i>
+    <% end %>
+    <%= link_to edit_list_path(list), class: "btn btn-warning" do %>
+      <i class="fa-solid fa-info"></i>
+    <% end %>
+    <%= link_to list, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
+      <i class="fa-solid fa-info"></i>
+    <% end %>
+  </div>
+</div>
