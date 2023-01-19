@@ -40,7 +40,7 @@ class ListsController < ApplicationController
   end
 
   def set_list
-    @list = List.find(params[:id])
+    @list = List.friendly.find(params[:id])
   end
 
   def list_params
