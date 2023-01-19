@@ -3,7 +3,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = current_user.lists
+    @lists = current_user.lists.includes(:recipes)
   end
 
   def show
