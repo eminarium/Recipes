@@ -28,6 +28,7 @@ class RecipesController < ApplicationController
 
   def show
     @instructions = @recipe.instructions.order(:position)
+    @lists = current_user.lists
   end
 
   def new

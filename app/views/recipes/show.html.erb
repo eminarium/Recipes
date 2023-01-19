@@ -29,6 +29,31 @@
           <% end %>
         </div>
 
+        <div class="col-md-3">
+          <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle= "dropdown" aria-expanded="false">
+              Add to List
+            </button>
+            <ul class="dropdown-menu">
+              <% @lists.each do |list| %>
+                <li>
+                  <% if list.recipes.include?(@recipe) %>
+                    <%= button_to add_list_recipe_path(list_id: list.slug, id: @recipe.slug), type: "button", class: "dropdown-item disabled" do %>
+                      <i class="fa-regular fa-circle-check me-1"></i>
+                      <%= list.title %>
+                    <% end %>
+                  <% else %>
+                    <%= button_to add_list_recipe_path(list_id: list.slug, id: @recipe.slug), type: "button", class: "dropdown-item" do %>
+                      <i class="fa-regular fa-circle-xmark me-1"></i>
+                      <%= list.title %>
+                    <% end %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
       </div>
     <% end %>
 

@@ -28,4 +28,6 @@ class Recipe < ApplicationRecord
   has_many :likes, as: :likeable
   belongs_to :user
   has_many :instructions, dependent: :destroy
+
+  has_many :recipes_lists
 end

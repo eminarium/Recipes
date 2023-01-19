@@ -9,7 +9,17 @@ Rails.application.routes.draw do
   get 'followees', to: "pages#followees", as: :followees
   get 'followers', to: 'pages#followers', as: :followers
 
-  resources :lists
+  resources :lists do
+    resources :recipes, only: [:add, :remove] do
+      member do
+        post "add", to: "recipes_lists#create"
+        delete "remove", to: "recipes_lists#destroy"
+      end
+    end
+    # post "recipes/:recipe_id/add", to: "recipes_lists#create"
+    # delete "recipes/:recipe_id/remove", to: "recipes_lists#destroy"
+  end
+
   resources :users
   get "profile", to: "users#profile", as: "profile"
   root "recipes#index"
