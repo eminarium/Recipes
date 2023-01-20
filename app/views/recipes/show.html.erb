@@ -38,13 +38,13 @@
               <% @lists.each do |list| %>
                 <li>
                   <% if list.recipes.include?(@recipe) %>
-                    <%= button_to add_list_recipe_path(list_id: list.slug, id: @recipe.slug), type: "button", class: "dropdown-item disabled" do %>
-                      <i class="fa-regular fa-circle-check me-1"></i>
+                    <%= button_to remove_list_recipe_path(list_id: list.slug, id: @recipe.slug), method: :delete, type: "button", class: "dropdown-item" do %>
+                      <i class="fa-regular fa-square-check me-1"></i>
                       <%= list.title %>
                     <% end %>
                   <% else %>
                     <%= button_to add_list_recipe_path(list_id: list.slug, id: @recipe.slug), type: "button", class: "dropdown-item" do %>
-                      <i class="fa-regular fa-circle-xmark me-1"></i>
+                      <i class="fa-regular fa-square me-1"></i>
                       <%= list.title %>
                     <% end %>
                   <% end %>

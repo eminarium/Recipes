@@ -7,6 +7,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @recipes = @list.recipes
   end
 
   def new
