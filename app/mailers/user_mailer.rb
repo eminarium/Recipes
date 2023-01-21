@@ -65,4 +65,21 @@ class UserMailer < ApplicationMailer
     bootstrap_mail(to: @user.email, subject: "Your recipe #{@recipe.title} has been unmarked cooked by someone...")
   end
 
+  def recipe_added_to_list_notification(list, recipe)
+    @list = list
+    @list_owner = list.user
+    @recipe = recipe
+    @recipe_owner = recipe.user
+    
+    bootstrap_mail(to: @recipe_owner.email, subject: "Your recipe has been added to list by #{@list_owner.email}")
+  end
+
+  def recipe_removed_from_list_notification(list, recipe)
+    @list = list
+    @list_owner = list.user
+    @recipe = recipe
+    @recipe_owner = recipe.user
+
+    bootstrap_mail(to: @recipe_owner.email, subject: "Your recipe has been removed from list by #{@list_owner.email} ")
+  end
 end

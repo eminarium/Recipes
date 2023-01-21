@@ -5,7 +5,7 @@
 
     <% if current_user && current_user.id != @recipe.user.id %>
       <div class="row">
-        <div class="col-md-3">
+        <div class="col">
           <% if current_user.likes?(@recipe) %>
             <%= button_to unlike_recipe_path(@recipe), method: :delete, class: "btn btn-danger mb-2" do %>
               Unlike <i class="fa-solid fa-heart"></i>
@@ -17,7 +17,7 @@
           <% end %>
         </div>
 
-        <div class="col-md-6">
+        <div class="col">
           <% if current_user.cooked?(@recipe) %>
             <%= button_to unmark_cooked_recipe_path(@recipe), method: :delete, class: "btn btn-primary mb-2" do %>
               Unmark Cooked <i class="fa-solid fa-kitchen-set"></i>
@@ -29,7 +29,7 @@
           <% end %>
         </div>
 
-        <div class="col-md-3">
+        <div class="col">
           <div class="dropdown">
             <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle= "dropdown" aria-expanded="false">
               Add to List
