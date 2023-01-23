@@ -24,8 +24,14 @@
       url: omniauth_authorize_path(resource_name, provider),
       method: :post,
       data: { turbo: "false" } do |f| %>
-        <%#= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
-        <%= f.submit "Login", type: "image", src: url_for("/assets/btn_google_signin_dark_normal_web.png") %>
+        <%#= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %>
+        <% if provider == :google_oauth2 %>
+          <%= f.submit "Login", type: "image", src: url_for("/assets/btn_google_signin_dark_normal_web.png") %>
+        <% elsif provider == :facebook %>
+          <%= f.submit "Login", type: "image", src: url_for("/assets/facebook-sign-in-btn"), height: "45" %>
+        <% else %>
+          <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />        
+        <% end %>
     <% end %>
   <% end %>
 <% end %>
