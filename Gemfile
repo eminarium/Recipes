@@ -53,6 +53,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'omniauth-rails_csrf_protection', "~> 1.0"
 
 gem 'faker'

@@ -27,6 +27,7 @@ Devise.setup do |config|
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
   config.omniauth :google_oauth2, ENV['GOOGLE_OAUTH_CLIENT_ID'], ENV['GOOGLE_OAUTH_CLIENT_SECRET']
   config.omniauth :facebook, ENV['FACEBOOK_OAUTH_CLIENT_ID'], ENV['FACEBOOK_OAUTH_CLIENT_SECRET'], token_params: { parse: :json }
+  config.omniauth :twitter, ENV['TWITTER_OAUTH_CLIENT_ID'], ENV['TWITTER_OAUTH_CLIENT_SECRET']
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

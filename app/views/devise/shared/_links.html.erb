@@ -28,7 +28,9 @@
         <% if provider == :google_oauth2 %>
           <%= f.submit "Login", type: "image", src: url_for("/assets/btn_google_signin_dark_normal_web.png") %>
         <% elsif provider == :facebook %>
-          <%= f.submit "Login", type: "image", src: url_for("/assets/facebook-sign-in-btn"), height: "45" %>
+          <%= f.submit "Login", type: "image", src: url_for("/assets/facebook-sign-in-btn.png"), height: "45" %>
+        <% elsif provider == :twitter %>
+          <%= f.submit "Login", type: "image", src: url_for("/assets/twitter-logo-with-birds-symbol-icon-24.png"), height: '60px', class: "p-2", style: "border: 1px dotted; border-radius: 10px; box-shadow: 2px 2px;" %>
         <% else %>
           <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />        
         <% end %>
