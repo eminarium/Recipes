@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  root "recipes#index"
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -22,7 +28,6 @@ Rails.application.routes.draw do
 
   resources :users
   get "profile", to: "users#profile", as: "profile"
-  root "recipes#index"
 
   post "users/:id/follow", to: "relationships#create", as: "follow_user"
   delete "users/:id/unfollow", to: "relationships#destroy", as: "unfollow_user"
