@@ -38,10 +38,14 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.build(recipe_params)
 
-    if @recipe.save
-      redirect_to @recipe, notice: "Recipe was successfully created."
-    else
-      render :new
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to @recipe, notice: "Recipe was successfully created." }
+        format.turbo_stream { flash.now[:notice] = "Recipe was successfully created." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { }
+      end
     end
   end
 
@@ -68,6 +72,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :brief_info, :description, :likes, :dislikes, :is_halal, :is_kosher, :is_vegetarian, :user_id)
+    params.require(:recipe).permit(:title, :brief_info, :description, :likes, :dislikes, :is_halal, :is_kosher, :is_vegetarian, :user_id, :image)
   end
 end

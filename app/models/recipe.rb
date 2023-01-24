@@ -17,11 +17,14 @@ class Recipe < ApplicationRecord
   # VALIDATIONS
 
   validates :title, presence: true
+  validates :image, presence: true
   validates :brief_info, presence: true
   # validates :likes, :dislikes, presence: true
   validates :user_id, presence: true
 
   # ASSOCIATIONS
+
+  has_one_attached :image
   has_many :cookings
   has_many :cooked_users, through: :cookings
   

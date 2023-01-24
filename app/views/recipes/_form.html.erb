@@ -1,10 +1,22 @@
-<%= form_with(model: @recipe) do |form| %>
+<%= form_with(model: @recipe, local: true, data: { turbo: false }) do |form| %>
   <div class="mb-3">
     <%= form.label :title, style: 'display: block', class: 'form-label' %>
     <%= form.text_field :title, class: 'form-control' %>
     <div style="color: red">
       <% if @recipe.errors.include?(:title) %>
         <% @recipe.errors.full_messages_for(:title).each do |error_message| %>
+          <%= error_message %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image, style: 'display: block', class: 'form-label' %>
+    <%= form.file_field :image, class: 'form-control' %>
+    <div style="color: red">
+      <% if @recipe.errors.include?(:image) %>
+        <% @recipe.errors.full_messages_for(:image).each do |error_message| %>
           <%= error_message %>
         <% end %>
       <% end %>
