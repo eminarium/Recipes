@@ -32,40 +32,17 @@
       <% end %>
     </div>
   </div>
+
   <div class="list-group">
 
-    <div class="row apple_pagination mb-3">
-
-      <%= render 'recipes_per_page_form' %>
-      
-      <div class="col">
-
-        <div class="page_info">
-          <%= page_entries_info @recipes %>
-        </div>
-        <%= link_to :action => 'index', :page => 1, per_page: params[:per_page] do %>
-          <i class="fa-solid fa-backward-fast"></i>
-        <% end %>
-        <%= will_paginate @recipes, container: false %>
-        <%= link_to :action => 'index', :page => @recipes.total_pages, per_page: params[:per_page] do %>
-          <i class="fa-solid fa-forward-fast"></i>
-        <% end %>
-
-      </div>
-
-    </div>
+    <%= render 'pagination' %>
 
 
     <% @recipes.each do |recipe| %>
       <%= render 'recipe', recipe: recipe %>
     <% end %>
 
-    <div class="apple_pagination mb-3">
-      <div class="page_info">
-        <%= page_entries_info @recipes %>
-      </div>
-      <%= will_paginate @recipes, container: false %>
-    </div>
+    <%= render 'pagination' %>
 
   </div>
 </div> 
