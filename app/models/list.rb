@@ -8,6 +8,6 @@ class List < ApplicationRecord
 
   # ASSOCIATIONS
   belongs_to :user
-  has_many :recipes_lists
+  has_many :recipes_lists, dependent: :destroy
   has_many :recipes, through: :recipes_lists
 end

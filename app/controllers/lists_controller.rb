@@ -18,7 +18,9 @@ class ListsController < ApplicationController
     @list = current_user.lists.build(list_params)
 
     if @list.save
-      redirect_to @list, notice: "List has been successfully created..."
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = "List was successfully added..." }
+      end
     else
       render :new
     end
@@ -29,7 +31,9 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      redirect_to @list, notice: "List has been successfully updated..."
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = "List has been successfully updated..." }
+      end
     else
       render :edit
     end
@@ -37,7 +41,10 @@ class ListsController < ApplicationController
 
   def destroy
     @list.destroy
-    redirect_to lists_path
+    
+    respond_to do |format|
+      format.turbo_stream { flash.now[:notice] = "List was successfully deleted..." }
+    end
   end
 
   def set_list

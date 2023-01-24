@@ -1,0 +1,5 @@
+<%= turbo_stream.prepend "lists" do %>
+  <%= render @list %>
+<% end %>
+
+<%= turbo_stream.update dom_id(List.new), "" %>
