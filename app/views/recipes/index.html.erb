@@ -49,8 +49,7 @@
 
     <%= form_tag recipes_path, method: :get do %>
       <%= label_tag "Recipes per page" %>
-      <%= select_tag :per_page, options_for_select([5, 10, 15, 20, 25, 50], params[:per_page])  %>
-      <%= submit_tag "OK", name: "" %>
+      <%= select_tag :per_page, options_for_select([5, 10, 15, 20, 25, 50], params[:per_page]), onChange: "this.form.requestSubmit()"  %>
     <% end %>
 
     <% @recipes.each do |recipe| %>
