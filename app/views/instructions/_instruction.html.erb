@@ -1,12 +1,12 @@
 <%= turbo_frame_tag instruction do %>
   <%= turbo_frame_tag dom_id(instruction, :edit) do %>
-    <div class="row">
+    <div class="row d-flex justify-content-around">
       <div class="col">
         <p><%= instruction.content %></p>
       </div>
 
       <% if current_user && @recipe.user == current_user %>
-        <div class="col">
+        <div class="col-auto">
           <div class="row">
             <div class="col">
               <%= link_to edit_recipe_instruction_path(@recipe, instruction), 

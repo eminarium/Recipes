@@ -126,16 +126,22 @@
     </div>
   </div>
   
-  <div class="col-md-6">
-    <p class="display-6">Instructions</p>
-    <% if current_user && @recipe.user == current_user %>
-      <%= link_to "New Instruction", 
-                  new_recipe_instruction_path(@recipe),
-                  data: { turbo_frame: dom_id(Instruction.new) },
-                  class: "btn btn-primary mb-1" %>
-      <hr/>
-    <% end %>
+  <div class="col-md-6 mt-3">
 
+    <div class="row d-flex justify-content-around">
+      <p class="col display-6">Instructions</p>
+      <div class="col-auto">
+        <% if current_user && @recipe.user == current_user %>
+          <%= link_to new_recipe_instruction_path(@recipe),
+                      data: { turbo_frame: dom_id(Instruction.new) },
+                      class: "btn btn-primary mb-1" do %>
+            <i class="fa-solid fa-plus me-1"></i> New Instruction
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <hr />
     <%= turbo_frame_tag Instruction.new %>
 
     <%= turbo_frame_tag "instructions" do %>
