@@ -34,23 +34,27 @@
   </div>
   <div class="list-group">
 
-    <div class="apple_pagination mb-3">
-      <div class="page_info">
-        <%= page_entries_info @recipes %>
+    <div class="row apple_pagination mb-3">
+
+      <%= render 'recipes_per_page_form' %>
+      
+      <div class="col">
+
+        <div class="page_info">
+          <%= page_entries_info @recipes %>
+        </div>
+        <%= link_to :action => 'index', :page => 1, per_page: params[:per_page] do %>
+          <i class="fa-solid fa-backward-fast"></i>
+        <% end %>
+        <%= will_paginate @recipes, container: false %>
+        <%= link_to :action => 'index', :page => @recipes.total_pages, per_page: params[:per_page] do %>
+          <i class="fa-solid fa-forward-fast"></i>
+        <% end %>
+
       </div>
-      <%= link_to :action => 'index', :page => 1, per_page: params[:per_page] do %>
-        <i class="fa-solid fa-backward-fast"></i>
-      <% end %>
-      <%= will_paginate @recipes, container: false %>
-      <%= link_to :action => 'index', :page => @recipes.total_pages, per_page: params[:per_page] do %>
-        <i class="fa-solid fa-forward-fast"></i>
-      <% end %>
+
     </div>
 
-    <%= form_tag recipes_path, method: :get do %>
-      <%= label_tag "Recipes per page" %>
-      <%= select_tag :per_page, options_for_select([5, 10, 15, 20, 25, 50], params[:per_page]), onChange: "this.form.requestSubmit()"  %>
-    <% end %>
 
     <% @recipes.each do |recipe| %>
       <%= render 'recipe', recipe: recipe %>

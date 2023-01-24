@@ -1,0 +1,4 @@
+<%= form_tag recipes_path, class: "col-3", method: :get do %>
+  <%= label_tag "Recipes per page" %>
+  <%= select_tag :per_page, options_for_select([5, 10, 15, 20, 25, 50], params[:per_page]), onChange: "this.form.requestSubmit()"  %>
+<% end %>
