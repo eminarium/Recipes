@@ -53,15 +53,15 @@
 
   <div class="mt-3">
     <%= link_to recipe, class: "btn btn-primary me-1 mt-0" do %>
-      Info <i class="bi bi-info-square ms-2"></i>
+      <i class="fa-solid fa-info mx-2"></i>
     <% end %>  
     
     <% if user_signed_in? and recipe.user == current_user %>
       <%= link_to edit_recipe_path(recipe), class: "btn btn-warning me-1" do %>
-        Edit <i class="bi bi-pencil-square ms-2"></i>
+        <i class="fa-solid fa-pen"></i>
       <% end %>  
       <%= link_to recipe, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" do %>
-        Delete <i class="bi bi-x-square ms-2"></i>
+        <i class="fa-solid fa-trash-can"></i>
       <% end %>      
     <% end %>
   </div>      
