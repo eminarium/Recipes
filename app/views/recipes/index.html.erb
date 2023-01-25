@@ -1,6 +1,6 @@
 <div>
-  <div class="row mt-5">
-    <div class="col-5">
+  <div class="row mt-5 bg-dark text-light rounded-3 p-2 d-flex justify-content-between">
+    <div class="col">
       <h1 class="display-3">
         <% if user_signed_in? %>
           <% if params[:shared] %>
@@ -15,7 +15,7 @@
         <% end %>
       </h1>
     </div>
-    <div class="col-7">
+    <div class="col-auto">
       <% if user_signed_in? %>
         <%= link_to new_recipe_path, class: "btn btn-primary mt-3 me-3" do %>
           New Recipe <i class="fa-solid fa-plus"></i>
