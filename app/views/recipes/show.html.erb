@@ -57,13 +57,15 @@
       </div>
     <% end %>
 
-    <div>
-      <%= image_tag @recipe.image, style: "width: 100%" if @recipe.image.attached? %>
-    </div>
-
     <div class="card">
       <div class="card-header"><h5><%= @recipe.title %></h5></div>
       <div class="card-body">
+        <% if @recipe.image.attached? %>
+          <%= image_tag @recipe.image, style: "width: 100%" %>
+        <% else %>
+          <%= image_tag url_for("/assets/no-photo-icon-28.jpg"), style: "width: 100%" %>
+        <% end %>
+        <hr />
         <p class="card-text"><%= @recipe.brief_info %></p>
         <hr />
         <div class="row">
