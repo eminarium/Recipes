@@ -58,7 +58,17 @@
     <% end %>
 
     <div class="card">
-      <div class="card-header"><h5><%= @recipe.title %></h5></div>
+      <div class="card-header row d-flex justify-content-between">
+        <div class="col">
+          <h5><%= @recipe.title %></h5>
+        </div>
+        <div class="col-auto">
+          <% if @recipe.likes_count > 0 %>
+            <span class="badge bg-danger"><i class="fa-solid fa-heart me-1"></i><%= @recipe.likes_count %></span>
+          <% end %>
+        </div>
+      </div>
+
       <div class="card-body">
         <% if @recipe.image.attached? %>
           <%= image_tag @recipe.image, style: "width: 100%" %>
