@@ -10,9 +10,6 @@ class Recipe < ApplicationRecord
   # CALLBACKS
   after_create :notify_recipe_owner_followers
 
-  def notify_recipe_owner_followers
-    FollowersNewRecipeNotifierJob.perform_later(self)
-  end
 
   # VALIDATIONS
 
@@ -33,4 +30,15 @@ class Recipe < ApplicationRecord
   has_many :instructions, dependent: :destroy
 
   has_many :recipes_lists
+
+  # METHODS
+
+  # def self.top_recipes(n)
+  #   Recipe.
+  # end
+
+  def notify_recipe_owner_followers
+    FollowersNewRecipeNotifierJob.perform_later(self)
+  end
+
 end
