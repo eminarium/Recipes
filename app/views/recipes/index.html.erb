@@ -1,6 +1,8 @@
 <div class="container-fluid">
 
-  <%= render 'top_liked' %>
+  <div class="list-group">
+    <%= render 'top_liked' %>
+  </div>
 
   <div class="row bg-dark text-light rounded-3 p-2 d-flex justify-content-between">
     <div class="col">
@@ -37,15 +39,13 @@
   </div>
 
   <div class="list-group">
-
     <%= render 'pagination' %>
-
 
     <% @recipes.each do |recipe| %>
       <%= render 'recipe', recipe: recipe %>
     <% end %>
 
     <%= render 'pagination' %>
-
   </div>
+
 </div> 
