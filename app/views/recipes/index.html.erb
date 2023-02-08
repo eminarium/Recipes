@@ -8,9 +8,9 @@
     <div class="col">
       <h1 class="display-5 mt-3">
         <% if user_signed_in? %>
-          <% if params[:shared] %>
+          <% if params[:type] == "shared" %>
             Shared Recipes
-          <% elsif params[:liked] %>
+          <% elsif params[:type] == "liked" %>
             My Favorite
           <% else %>
             My Recipes
