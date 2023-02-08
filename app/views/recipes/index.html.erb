@@ -1,10 +1,10 @@
 <div class="container-fluid">
 
   <div class="list-group">
-    <%= render 'top_liked' %>
+    <%= render 'top_liked' unless params[:type] %>
   </div>
 
-  <div class="row bg-dark text-light rounded-3 p-2 d-flex justify-content-between">
+  <div class="row bg-dark text-light rounded-3 p-2 d-flex justify-content-between pt-0">
     <div class="col">
       <h1 class="display-5 mt-3">
         <% if user_signed_in? %>
@@ -25,7 +25,7 @@
         <%= link_to new_recipe_path, class: "btn btn-primary mt-3 me-3" do %>
           New Recipe <i class="fa-solid fa-plus"></i>
         <% end %>
-        <%= link_to recipes_path(request.params.except(:action, :controller, :type)), class: "btn btn-warning mt-3 me-3" do %>
+        <%= link_to recipes_path(request.params.except(:action, :controller, :type).merge(type: :personal)), class: "btn btn-warning mt-3 me-3" do %>
           My Recipes <i class="fa-solid fa-user-large"></i>
         <% end %>
         <%= link_to recipes_path(request.params.except(:action, :controller).merge(type: :shared)), class: "btn btn-success mt-3 me-3" do %>

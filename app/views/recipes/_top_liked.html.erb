@@ -4,4 +4,8 @@
   </h1>
 </div>
 
-<%= render Recipe.top_liked(3) %>
+<div class="row">
+  <% Recipe.top_liked(3).each do |recipe| %>
+    <%= render "recipes/recipe_card", recipe: recipe %>
+  <% end %>
+</div>
