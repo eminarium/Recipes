@@ -78,36 +78,8 @@
         <hr />
         <p class="card-text"><%= @recipe.brief_info %></p>
         <hr />
-        <div class="row">
 
-          <div class="col">
-            Halal 
-            <% if @recipe.is_halal? %>
-              <i class="fa-solid fa-circle-check ms-1" style="color: green"></i>
-            <% else %>
-              <i class="fa-solid fa-circle-xmark ms-1" style="color: red"></i>
-            <% end %>
-          </div>
-
-          <div class="col">
-            Kosher 
-            <% if @recipe.is_kosher? %>
-              <i class="fa-solid fa-circle-check ms-1" style="color: green"></i>
-            <% else %>
-              <i class="fa-solid fa-circle-xmark ms-1" style="color: red"></i>
-            <% end %>
-          </div>
-
-          <div class="col">
-            Veg
-            <% if @recipe.is_vegetarian? %>
-              <i class="fa-solid fa-circle-check ms-1" style="color: green"></i>
-            <% else %>
-              <i class="fa-solid fa-circle-xmark ms-1" style="color: red"></i>
-            <% end %>
-          </div>
-
-        </div>    
+        <%= recipe_badges(@recipe) %>
 
         <hr />
 

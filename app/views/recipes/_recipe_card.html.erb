@@ -13,14 +13,15 @@
 
           <h5 class="card-title"><%= recipe.title %></h5>
           <p class="card-text"><%= recipe.brief_info %></p>
-
           <%= recipe_badges(recipe) %>
- 
-          <div>
-            <%= time_ago_in_words recipe.created_at %> ago 
-          </div>
+
+          <hr />
+
           <div>
             <%= link_to recipe.user.email, user_path(recipe.user), target: "_top" %>
+          </div>
+          <div>
+            <%= time_ago_in_words recipe.created_at %> ago 
           </div>
           <div>
             <% if recipe.likes_count > 0 %>
@@ -28,7 +29,7 @@
             <% end %>              
           </div>     
 
-
+          <hr />
 
           <%= link_to recipe, class: "col-auto btn btn-primary me-1 mt-2" do %>
             Info <i class="fa-solid fa-info mx-2"></i>
