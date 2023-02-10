@@ -14,51 +14,8 @@
           <h5 class="card-title"><%= recipe.title %></h5>
           <p class="card-text"><%= recipe.brief_info %></p>
 
-          <table class="mt-3 ms-3">
-            <tr>
-              <td>Halal</td>
-              <td>
-                <% if recipe.is_halal? %>
-                  <i class="fa-solid fa-circle-check ms-2" style="color: green"></i>
-                <% else %>
-                  <i class="fa-solid fa-circle-xmark ms-2" style="color: red"></i>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>Kocher</td>
-              <td>
-                <% if recipe.is_kosher? %>
-                  <i class="fa-solid fa-circle-check ms-2" style="color: green"></i>
-                <% else %>
-                  <i class="fa-solid fa-circle-xmark ms-2" style="color: red"></i>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>Vegetarian</td>
-              <td>
-                <% if recipe.is_vegetarian? %>
-                  <i class="fa-solid fa-circle-check ms-2" style="color: green"></i>
-                <% else %>
-                  <i class="fa-solid fa-circle-xmark ms-2" style="color: red"></i>
-                <% end %>
-              </td>
-            </tr> 
-            <tr>
-              <td cols="2">
-                <% if current_user && current_user.likes?(recipe) %>
-                  <span class="badge bg-danger"> <i class="fa-solid fa-heart" style="font-size: 10pt"></i> </span>
-                <% end %>
-                <% if current_user && current_user.cooked?(recipe) %>
-                  <span class="badge bg-secondary"> <i class="fa-solid fa-kitchen-set" style="font-size: 14pt"></i> </span>
-                <% end %>   
-              </td>
-            </tr>               
-          </table>
-
-
-
+          <%= recipe_badges(recipe) %>
+ 
           <div>
             <%= time_ago_in_words recipe.created_at %> ago 
           </div>
