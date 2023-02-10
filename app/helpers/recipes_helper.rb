@@ -28,19 +28,46 @@ module RecipesHelper
     end
   end
 
-  def recipe_card_image(recipe)
-    if recipe.image.attached?
-      image_tag recipe.image, class: "card-img-top"
-    else
-      image_tag url_for("/assets/no-photo-icon-28.jpg"), class: "card-img-top"
+  def recipe_liked_icon(user, recipe)
+    if user && user.likes?(recipe)
+      "<div class='like-button'>
+        <span class='p-1' style='border: 1px solid white; border-radius: 5px; background-color: white'>
+          <i class='fa fa-heart'></i>
+        </span>
+      </div>"
+      .html_safe
     end
   end
 
-  def recipe_tile_image(recipe)
+  def recipe_card_image(user, recipe)
     if recipe.image.attached?
-      image_tag recipe.image, style: "height: 200px"
+      "<div class='image-container'>
+        #{recipe_liked_icon(user, recipe)}
+        #{image_tag recipe.image, class: 'card-img-top image'}
+      </div>"
+      .html_safe
     else
-      image_tag url_for("/assets/no-photo-icon-28.jpg"), style: "height: 200px"
+      "<div class='image-container'>
+        #{recipe_liked_icon(user, recipe)}
+        #{image_tag url_for('/assets/no-photo-icon-28.jpg'), class: 'card-img-top image'}
+      </div>"
+      .html_safe           
+    end
+  end
+
+  def recipe_tile_image(user, recipe)
+    if recipe.image.attached?
+      "<div class='image-container'>
+        #{recipe_liked_icon(user, recipe)}
+        #{image_tag recipe.image, class: 'image', style: 'height: 200px'}
+      </div>"
+      .html_safe
+    else
+      "<div class='image-container'>
+        #{recipe_liked_icon(user, recipe)}
+        #{image_tag url_for('/assets/no-photo-icon-28.jpg'), class: 'image', style: 'height: 200px'}
+      </div>"
+      .html_safe      
     end
   end
 
