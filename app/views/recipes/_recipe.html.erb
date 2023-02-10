@@ -4,11 +4,7 @@
   <div class="row d-flex w-100 justify-content-between mt-2 mb-2">
 
     <div class="col-md">
-      <% if recipe.image.attached? %>
-        <%= image_tag recipe.image, style: "height: 200px" %>
-      <% else %>
-        <%= image_tag url_for("/assets/no-photo-icon-28.jpg"), style: "height: 200px" %>
-      <% end %>    
+      <%= recipe_tile_image(recipe) %>
     </div>
 
     <div class="col text-left">

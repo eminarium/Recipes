@@ -28,4 +28,21 @@ module RecipesHelper
     end
   end
 
+  def recipe_card_image(recipe)
+    if recipe.image.attached?
+      image_tag recipe.image, class: "card-img-top"
+    else
+      image_tag url_for("/assets/no-photo-icon-28.jpg"), class: "card-img-top"
+    end
+  end
+
+  def recipe_tile_image(recipe)
+    if recipe.image.attached?
+      image_tag recipe.image, style: "height: 200px"
+    else
+      image_tag url_for("/assets/no-photo-icon-28.jpg"), style: "height: 200px"
+    end
+  end
+
+
 end
