@@ -24,10 +24,9 @@
           <%= time_ago_in_words recipe.created_at %> ago | 
           <%= link_to recipe.user.email, user_path(recipe.user), target: "_top" %>
 
-          <% if recipe.likes_count > 0 %>
-          |  <span class="badge bg-danger"><i class="fa-solid fa-heart me-1"></i> <%= recipe.likes_count %></span>   
-          <% end %>              
-        </small>     
+          <%= recipe_likes_count_badge(recipe) %> 
+          <%= recipe_cooked_badge(current_user, recipe) %>
+        </small>
       </div>
 
       <div class="row mt-md-5 text-right">
