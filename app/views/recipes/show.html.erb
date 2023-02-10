@@ -35,6 +35,10 @@
               Add to List
             </button>
             <ul class="dropdown-menu">
+              <% if @lists.empty? %>
+                <li class="dropdown-item">You have no lists yet...</li>
+              <% end %>
+
               <% @lists.each do |list| %>
                 <li>
                   <% if list.recipes.include?(@recipe) %>
