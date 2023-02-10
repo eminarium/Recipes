@@ -74,11 +74,7 @@
       </div>
 
       <div class="card-body">
-        <% if @recipe.image.attached? %>
-          <%= image_tag @recipe.image, style: "width: 100%" %>
-        <% else %>
-          <%= image_tag url_for("/assets/no-photo-icon-28.jpg"), style: "width: 100%" %>
-        <% end %>
+        <%= recipe_info_image(current_user, @recipe) %>
         <hr />
         <p class="card-text"><%= @recipe.brief_info %></p>
         <hr />
