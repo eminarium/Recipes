@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     # delete "recipes/:recipe_id/remove", to: "recipes_lists#destroy"
   end
 
+  get 'tagged', to: "recipes#tagged", as: :tagged
+
   resources :users
   get "profile", to: "users#profile", as: "profile"
 

@@ -104,7 +104,9 @@ module RecipesHelper
   end
 
   def recipe_tag(tag)
-    "<span class='badge bg-secondary'># #{tag.name}</span>"
+    link_to tagged_path(tag: tag.name), target: "_top" do
+      "<span class='badge bg-secondary' style='z-index: auto'># #{tag.name}</span>".html_safe
+    end
   end
 
 end

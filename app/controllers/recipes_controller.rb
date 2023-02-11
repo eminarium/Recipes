@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :tagged]
 
   def index
     unless params[:per_page].present?
@@ -19,6 +19,16 @@ class RecipesController < ApplicationController
       else
         current_user.recipes
       end
+    else
+      @recipes = Recipe.all
+    end
+
+    @recipes = @recipes.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
+  end
+
+  def tagged
+    if params[:tag].present?
+      @recipes = Recipe.tagged_with(params[:tag])
     else
       @recipes = Recipe.all
     end
