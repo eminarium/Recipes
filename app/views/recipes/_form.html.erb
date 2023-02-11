@@ -48,6 +48,12 @@
     </div>
   </div>
   
+  
+  <div class="mb-3">
+    <%= form.label :tag_list, "Tags" %>
+    <%= form.text_field :tag_list, placeholder: "sweet, sour, carrot...", value: @recipe.tag_list.join(", "), class: "form-control" %>
+  </div>
+
   <div class="row mb-3">
     <div class="col border pt-3 pb-2 text-center">
       <%= form.label "Halal ?", class: "form-label me-2" %>

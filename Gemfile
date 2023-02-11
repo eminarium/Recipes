@@ -32,6 +32,7 @@ gem "redis", "~> 4.0"
 gem 'will_paginate'
 gem 'friendly_id'
 gem 'acts_as_list'
+gem 'acts-as-taggable-on'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

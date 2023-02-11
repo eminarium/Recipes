@@ -2,7 +2,8 @@ class Recipe < ApplicationRecord
 
   extend FriendlyId
   friendly_id :title, use: :slugged
-  
+
+  acts_as_taggable_on :tags
   self.per_page = 10
 
   has_rich_text :description

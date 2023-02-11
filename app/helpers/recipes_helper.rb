@@ -99,4 +99,12 @@ module RecipesHelper
     end
   end
 
+  def recipe_tags(recipe)
+    recipe.tags.map{ |tag| recipe_tag(tag) }.join(" ").html_safe
+  end
+
+  def recipe_tag(tag)
+    "<span class='badge bg-secondary'># #{tag.name}</span>"
+  end
+
 end
