@@ -9,6 +9,7 @@ class Instruction < ApplicationRecord
 
   # VALIDATIONS
   validates :content, presence: true
+  validates :recipe_id, presence: true
 
   # ASSOCIATIONS
   belongs_to :recipe
