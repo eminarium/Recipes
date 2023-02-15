@@ -46,7 +46,6 @@ RSpec.describe 'Recipes', type: :request do
   describe "DELETE /destroy" do
     it "destroys the requested recipe" do
       sign_in user
-      post recipes_url, params: { recipe: valid_attributes }
 
       expect { delete recipe_url(Recipe.last) }.to change(Recipe, :count).by(-1)
     end

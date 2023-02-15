@@ -19,6 +19,7 @@ class ListsController < ApplicationController
 
     if @list.save
       respond_to do |format|
+        format.html { redirect_to @list, status: :created }
         format.turbo_stream { flash.now[:notice] = "List was successfully added..." }
       end
     else
@@ -43,6 +44,7 @@ class ListsController < ApplicationController
     @list.destroy
     
     respond_to do |format|
+      format.html { redirect_to lists_path, status: :ok }
       format.turbo_stream { flash.now[:notice] = "List was successfully deleted..." }
     end
   end
