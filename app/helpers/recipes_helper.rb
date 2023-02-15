@@ -52,7 +52,7 @@ module RecipesHelper
       "<div class='outer-container'>
         <div class='image-container'>
           #{recipe_liked_icon(user, recipe)}
-          #{image_tag url_for('/assets/no-photo-icon-28.jpg'), class: 'card-img-top image'}
+          #{image_tag url_for('/assets/images/no-photo-icon-28.jpg'), class: 'card-img-top image'}
         </div>
       </div>"
       .html_safe           
@@ -72,7 +72,7 @@ module RecipesHelper
       "<div class='outer-container'>
         <div class='image-container'>
           #{recipe_liked_icon(user, recipe)}
-          #{image_tag url_for('/assets/no-photo-icon-28.jpg'), class: 'image', style: 'height: 200px'}
+          #{image_tag url_for('/assets/images/no-photo-icon-28.jpg'), class: 'image', style: 'height: 200px'}
         </div>
       </div>"
       .html_safe      
@@ -92,7 +92,7 @@ module RecipesHelper
       "<div class='outer-container'>
         <div class='image-container'>
           #{recipe_liked_icon(user, recipe)}
-          #{image_tag url_for('/assets/no-photo-icon-28.jpg'), class: 'image', style: 'width: 100%'}
+          #{image_tag url_for('/assets/images/no-photo-icon-28.jpg'), class: 'image', style: 'width: 100%'}
         </div>
       </div>"
       .html_safe           
