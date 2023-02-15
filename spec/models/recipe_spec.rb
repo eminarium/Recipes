@@ -3,6 +3,13 @@ require 'rails_helper'
 RSpec.describe Recipe, type: :model do
 
   describe "Validations" do
+
+    let(:image) {
+      Rack::Test::UploadedFile.new(
+        Rails.root.join("app/assets/images/no-photo-icon-28.jpg")
+      )
+    }
+
     let(:user) {
       User.create(email: "test.user@gmail.com", password: "testpass", password_confirmation: "testpass")
     }
@@ -10,7 +17,8 @@ RSpec.describe Recipe, type: :model do
     subject { 
       described_class.new(title: "Chicken Biryani",
                           brief_info: "Brief info about Chicken Biryani",
-                          user_id: user.id
+                          user_id: user.id,
+                          image: image
       )
     }
 
@@ -33,9 +41,16 @@ RSpec.describe Recipe, type: :model do
       expect(subject).to_not be_valid
     end
 
-    it { should validate_presence_of(:title) } 
-    it { should validate_presence_of(:brief_info) }
-    it { should validate_presence_of(:user_id) }
+    it "is not valid without an image attached" do
+      subject.image = nil
+      expect(subject).to_not be_valid
+    end
+
+    describe "Validations" do
+      it { should validate_presence_of(:title) } 
+      it { should validate_presence_of(:brief_info) }
+      it { should validate_presence_of(:user_id) }
+    end
   end
 
   describe "Associations" do
@@ -43,4 +58,5 @@ RSpec.describe Recipe, type: :model do
     it { should have_many(:instructions) }
     it { should have_many(:likes) }
   end
+
 end
