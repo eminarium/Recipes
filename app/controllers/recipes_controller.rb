@@ -50,7 +50,7 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: "Recipe was successfully created." }
+        format.html { redirect_to @recipe, notice: "Recipe was successfully created.", status: :created }
         format.turbo_stream { flash.now[:notice] = "Recipe was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
