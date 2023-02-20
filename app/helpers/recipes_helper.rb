@@ -44,7 +44,7 @@ module RecipesHelper
       "<div class='outer-container'>
         <div class='image-container'>
           #{recipe_liked_icon(user, recipe)}
-          #{image_tag recipe.image, class: 'card-img-top image'}
+          #{image_tag recipe.image, class: 'card-img-top', style: 'width: 100%; height: 200px; object-fit:cover; object-position: right;'}
         </div>
       </div>"
       .html_safe
@@ -64,7 +64,7 @@ module RecipesHelper
       "<div class='outer-container'>
         <div class='image-container'>
           #{recipe_liked_icon(user, recipe)}
-          #{image_tag recipe.image, class: 'image', style: 'height: 200px'}
+          #{image_tag recipe.image, class: 'image', style: 'height: 200px; object-fit:cover; object-position: right;'}
         </div>
       </div>"
       .html_safe
