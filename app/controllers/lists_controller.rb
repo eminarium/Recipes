@@ -3,11 +3,11 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = current_user.lists.includes(:recipes)
+    @lists = current_user.lists
   end
 
   def show
-    @recipes = @list.recipes
+    @recipes = @list.recipes.with_attached_image.includes([:tags, :user])
   end
 
   def new

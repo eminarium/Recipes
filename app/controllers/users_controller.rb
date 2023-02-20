@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
   def show
-    @recipes = @user.recipes.includes(:user)
+    @recipes = @user.recipes.with_attached_image.includes([:tags])
   end
 
   def profile
