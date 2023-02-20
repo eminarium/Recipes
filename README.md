@@ -37,6 +37,7 @@ Current project mainly makes use of Hotwire feature of Rails 7 and it is used in
 - [faker](https://github.com/faker-ruby/faker): for generating fake data such as recipe names, list titles, and similar content.
 - [rspec-rails](https://github.com/rspec/rspec-rails): to be able to test our app with RSpec framework.
 - [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers): to use one-liner tests for common Rails functionality.
+- [bullet](https://github.com/flyerhzm/bullet): to help kill N+1 queries and unused eager loading.
 
 
 

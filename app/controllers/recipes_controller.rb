@@ -13,17 +13,17 @@ class RecipesController < ApplicationController
     if user_signed_in?
       @recipes = case type
       when "shared"
-        Recipe.where.not(user_id: current_user.id)
+        Recipe.where.not(user_id: current_user.id).includes([:user])
       when "liked"
         current_user.liked_recipes
       else
         current_user.recipes
       end
     else
-      @recipes = Recipe.all
+      @recipes = Recipe.all.includes([:user])
     end
 
-    @recipes = @recipes.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
+    @recipes = @recipes.with_attached_image.includes([:tags]).paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
   end
 
   def tagged
@@ -33,7 +33,7 @@ class RecipesController < ApplicationController
       @recipes = Recipe.all
     end
 
-    @recipes = @recipes.paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
+    @recipes = @recipes.with_attached_image.includes([:tags, :user]).paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
   end
 
   def show

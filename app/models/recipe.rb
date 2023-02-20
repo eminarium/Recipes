@@ -10,7 +10,7 @@ class Recipe < ApplicationRecord
 
 
   # SCOPES
-  scope :top_liked, -> (n) { order(likes_count: :desc).limit(n) }
+  scope :top_liked, -> (n) { order(likes_count: :desc).with_attached_image.includes([:tags, :user]).limit(n) }
 
   # CALLBACKS
   after_create :notify_recipe_owner_followers

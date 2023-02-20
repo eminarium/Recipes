@@ -64,7 +64,7 @@ module RecipesHelper
       "<div class='outer-container'>
         <div class='image-container'>
           #{recipe_liked_icon(user, recipe)}
-          #{image_tag recipe.image, class: 'image', style: 'height: 200px; object-fit:cover; object-position: right;'}
+          #{image_tag recipe.image, class: 'image', style: 'height: 200px; object-fit:cover; object-position: right; border-radius: 8px'}
         </div>
       </div>"
       .html_safe
