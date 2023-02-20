@@ -13,17 +13,17 @@ class RecipesController < ApplicationController
     if user_signed_in?
       @recipes = case type
       when "shared"
-        Recipe.where.not(user_id: current_user.id).includes([:user])
+        Recipe.where.not(user_id: current_user.id)
       when "liked"
         current_user.liked_recipes
       else
         current_user.recipes
       end
     else
-      @recipes = Recipe.all.includes([:user])
+      @recipes = Recipe.all
     end
 
-    @recipes = @recipes.with_attached_image.includes([:tags]).paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
+    @recipes = @recipes.with_attached_image.includes([:tags, :user]).paginate(page: params[:page], per_page: params[:per_page]).order(:created_at)
   end
 
   def tagged
