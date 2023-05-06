@@ -1,9 +1,14 @@
 FactoryBot.define do
-  # factory :user do
-  #   email { Faker::Internet.email }
-  #   password { Faker::Internet.password }
-  #   password_confirmation { password }
-  # end
+  factory :user do
+    email { Faker::Internet.email }
+    password { Faker::Internet.password }
+    password_confirmation { password }
+  end
+
+  factory :list do
+    title { Faker::Lorem.words.join(" ") }
+    user { create(:user) }
+  end
 
   # factory :workout_exercise do
   #   workout { create(:workout) }

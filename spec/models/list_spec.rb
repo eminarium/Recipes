@@ -4,16 +4,9 @@ RSpec.describe List, type: :model do
 
   describe "Validations" do
 
-    let(:user) {
-      User.create(email: "test@gmail.com", password: "testpass", password_confirmation: "testpass")
-    }
+    let(:user) { create(:user) }
 
-    subject {
-      described_class.new(
-        title: "Test list",
-        user_id: user.id
-      )
-    }
+    subject { create(:list) }
 
     it "is valid with valid attributes" do
       expect(subject).to be_valid
