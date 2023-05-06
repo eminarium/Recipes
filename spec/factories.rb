@@ -21,6 +21,11 @@ FactoryBot.define do
     }
   end
 
+  factory :instruction do
+    content { Faker::Lorem.sentence }
+    recipe { create(:recipe) }
+  end
+
   # factory :workout_exercise do
   #   workout { create(:workout) }
   #   exercise { create(:exercise, workout: workout) }

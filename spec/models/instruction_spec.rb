@@ -4,23 +4,10 @@ RSpec.describe Instruction, type: :model do
 
   describe "Validations" do
 
-    let(:image) {
-      Rack::Test::UploadedFile.new(
-        Rails.root.join("app/assets/images/no-photo-icon-28.jpg")
-      )
-    }
+    let(:user) { create(:user) }
+    let(:recipe) { create(:recipe) }
 
-    let(:user) {
-      User.create(email: "test@gmail.com", password: "testpass", password_confirmation: "testpass")
-    }
-
-    let(:recipe) {
-      Recipe.create(title: "Chicken Biryani", brief_info: "Just a brief info", user_id: user.id, image: image)
-    }
-
-    subject{
-      described_class.new(content: "Just an instruction", recipe: recipe)
-    }
+    subject{ create(:instruction) }
 
     it "should be valid with valid attributes" do
       expect(subject).to be_valid
