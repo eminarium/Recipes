@@ -66,6 +66,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'figaro'
   gem 'rspec-rails'
+  gem "factory_bot_rails"
   gem 'shoulda-matchers'
 end
 
