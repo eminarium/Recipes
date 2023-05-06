@@ -4,23 +4,8 @@ RSpec.describe Recipe, type: :model do
 
   describe "Validations" do
 
-    let(:image) {
-      Rack::Test::UploadedFile.new(
-        Rails.root.join("app/assets/images/no-photo-icon-28.jpg")
-      )
-    }
-
-    let(:user) {
-      User.create(email: "test.user@gmail.com", password: "testpass", password_confirmation: "testpass")
-    }
-
-    subject { 
-      described_class.new(title: "Chicken Biryani",
-                          brief_info: "Brief info about Chicken Biryani",
-                          user_id: user.id,
-                          image: image
-      )
-    }
+    let(:user) { create(:user) }
+    subject { create(:recipe) }
 
     it "is valid with valid attributes" do
       expect(subject).to be_valid

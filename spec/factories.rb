@@ -10,6 +10,17 @@ FactoryBot.define do
     user { create(:user) }
   end
 
+  factory :recipe do
+    title { Faker::Lorem.words.join(" ") }
+    brief_info { Faker::Lorem.sentence }
+    user { create(:user) }
+    image {
+      Rack::Test::UploadedFile.new(
+        Rails.root.join("app/assets/images/no-photo-icon-28.jpg")
+      )
+    }
+  end
+
   # factory :workout_exercise do
   #   workout { create(:workout) }
   #   exercise { create(:exercise, workout: workout) }
