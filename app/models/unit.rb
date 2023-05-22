@@ -1,4 +1,5 @@
-class Ingredient < ApplicationRecord
+class Unit < ApplicationRecord
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
