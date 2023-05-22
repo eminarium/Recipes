@@ -1,0 +1,17 @@
+<%= turbo_frame_tag ingredient do %>
+  <%= turbo_frame_tag dom_id(ingredient, :edit) do %>
+
+    <div class="list-group-item d-flex justify-content-between ms-2 mt-3 rounded-2">
+      <h1 class="display-6"><%= ingredient.name %></h1>
+      <div class="col-auto">
+        <%= link_to edit_ingredient_path(ingredient), data: { turbo_frame: dom_id(ingredient, :edit) }, class: "btn btn-warning" do %>
+          <i class = "fa-solid fa-pencil"></i>
+        <% end %>
+        <%= link_to ingredient, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" do %>
+          <i class="fa-solid fa-times"></i>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+<% end %>

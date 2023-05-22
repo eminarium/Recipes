@@ -49,6 +49,8 @@ class ListsController < ApplicationController
     end
   end
 
+  private
+  
   def set_list
     @list = List.friendly.find(params[:id])
   end

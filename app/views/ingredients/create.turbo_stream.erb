@@ -1,0 +1,5 @@
+<%= turbo_stream.append "ingredients" do %>
+  <%= render @ingredient %>
+<% end %>
+
+<%= turbo_stream.update Ingredient.new, "" %>

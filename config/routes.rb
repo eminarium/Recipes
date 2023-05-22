@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'followees', to: "pages#followees", as: :followees
   get 'followers', to: 'pages#followers', as: :followers
 
+  resources :ingredients
+
   resources :lists do
     resources :recipes, only: [:add, :remove] do
       member do

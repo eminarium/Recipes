@@ -1,0 +1,5 @@
+  <h1>Add new ingredient</h1>
+
+  <%= turbo_frame_tag Ingredient.new do %>
+    <%= render "form" %>
+  <% end %>
