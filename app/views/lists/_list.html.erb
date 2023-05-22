@@ -3,13 +3,13 @@
 
     <div class="list-group-item d-flex justify-content-between ms-2 mt-3 rounded-2">
       <div>
-        <%= link_to list, class: "list-group-item-action mb-1", style: "text-decoration: none" do %>
+        <%= link_to list, class: "list-group-item-action mb-1", style: "text-decoration: none", data: { turbo_frame: "_top" } do %>
           <%= list.title %>
         <% end %>
       </div>
       <div>
         <span class="badge bg-primary p-2 me-4"><%= list.recipes.count %></span>
-        <%= link_to list, class: "btn btn-primary" do %>
+        <%= link_to list, class: "btn btn-primary", data: { turbo_frame: "_top" } do %>
           <i class="fa-solid fa-info"></i>
         <% end %>
         <%= link_to edit_list_path(list), data: { turbo_frame: dom_id(list, :edit) }, class: "btn btn-warning" do %>
