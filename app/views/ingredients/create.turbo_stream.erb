@@ -2,4 +2,4 @@
   <%= render @ingredient %>
 <% end %>
 
-<%= turbo_stream.update Ingredient.new, "" %>
+<%= turbo_stream.update dom_id(Ingredient.new), "" %>

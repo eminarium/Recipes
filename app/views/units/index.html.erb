@@ -1,0 +1,20 @@
+<% if current_user %>
+  <div class="list-group mt-3">
+    <div class="container-fluid bg-dark text-light rounded-3 p-2 d-flex justify-content-between">
+      <h1 class="display-5 mt-3 ms-2">Units List</h1>
+      <%= link_to "New Unit", 
+                    new_unit_path,
+                    class: "btn btn-primary my-4 me-3",
+                    data: { turbo_frame: dom_id(Unit.new) } %>
+    </div>
+  </div>
+
+  <%= turbo_frame_tag Unit.new %>
+
+  <%= turbo_frame_tag "units" do %>
+    <% if @units.empty? %>
+      <h1 class="display-5 mt-3">You have no units yet...</h1>
+    <% end %>
+    <%= render @units %>
+  <% end %>
+<% end %>

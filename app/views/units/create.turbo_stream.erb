@@ -1,0 +1,5 @@
+<%= turbo_stream.append "units" do %>
+  <%= render @unit %>
+<% end %>
+
+<%= turbo_stream.update dom_id(Unit.new), "" %>
