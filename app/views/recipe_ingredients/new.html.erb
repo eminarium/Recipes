@@ -1,0 +1,6 @@
+<h1>Add new ingredient to recipe</h1>
+
+
+<%= turbo_frame_tag "new_recipe_#{@recipe.id}_ingredient" do %>
+  <%= render "new_ingredient_form" %>
+<% end %>

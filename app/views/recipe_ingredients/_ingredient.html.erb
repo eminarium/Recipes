@@ -1,0 +1,27 @@
+<%= turbo_frame_tag ingredient do %>
+  <%= turbo_frame_tag "edit_recipe_#{@recipe.id}_ingredient_#{ingredient.ingredient.id}" do %>
+    <div class="row">
+      <p class="col"><%= ingredient.ingredient.name %></p>
+      <div class="col">
+        <%= ingredient.amount %>
+        <%= ingredient.unit.name %>
+      </div>
+
+      <% if current_user && @recipe.user == current_user %>
+        <div class="col-auto">
+          <%= link_to edit_recipe_ingredient_path(@recipe, ingredient.ingredient),
+                      data: { turbo_frame: "edit_recipe_#{@recipe.id}_ingredient_#{ingredient.ingredient.id}" },
+                      class: "btn btn-warning" do %>
+            <i class="fa-solid fa-pencil"></i>
+          <% end %>
+          <%= link_to remove_recipe_ingredient_path(@recipe, ingredient.ingredient),
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                      class: "btn btn-danger" do %>
+            <i class="fa-solid fa-times"></i>
+          <% end %>
+        </div>
+      <% end %>
+      
+    </div>
+  <% end %>
+<% end %>

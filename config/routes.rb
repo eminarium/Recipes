@@ -37,6 +37,13 @@ Rails.application.routes.draw do
   post "users/:id/follow", to: "relationships#create", as: "follow_user"
   delete "users/:id/unfollow", to: "relationships#destroy", as: "unfollow_user"
 
+  get "recipes/:recipe_id/ingredients/new", to: "recipe_ingredients#new", as: :new_recipe_ingredient
+  get "recipes/:recipe_id/ingredients/:id/edit", to: "recipe_ingredients#edit", as: :edit_recipe_ingredient
+  patch "recipes/:recipe_id/ingredients/:id/", to: "recipe_ingredients#update", as: :update_recipe_ingredient
+  # put "recipes/:recipe_id/ingredients/:id/", to: "recipe_ingredients#update", as: :update_recipe_ingredient
+  # post "recipes/:recipe_id/ingredients", to: "recipe_ingredients#create", as: :add_recipe_ingredient
+  # delete "recipes/:recipe_id/ingredients/:id", to: "recipe_ingredients#destroy", as: :remove_recipe_ingredient
+
   resources :recipes do
     # get 'shared', to: "recipes#shared", on: :collection
 
@@ -52,6 +59,18 @@ Rails.application.routes.draw do
       member do
         put "lift", to: "instructions#lift"
         put "drop", to: "instructions#drop"
+      end
+    end
+
+    # resources :recipe_ingredients, only: [:new, :edit] do
+    #   get "new", to: "recipe_ingredients#new", as: :new_recipe_ingredient
+    #   get "edit", to: "recipe_ingredients#edit", as: :edit_recipe_ingredient
+    # end
+
+    resources :ingredients, only: [:add, :remove] do
+      member do
+        post "/", to: "recipe_ingredients#create", as: :add
+        delete "/", to: "recipe_ingredients#destroy", as: :remove
       end
     end
   end

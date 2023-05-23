@@ -1,0 +1,23 @@
+<%= form_with(model: @recipe_ingredient, url: update_recipe_ingredient_path(@recipe, @ingredient)) do |form| %>
+  <div class="col mb-2">
+    <%= form.collection_select :ingredient_id, @ingredients, :id, :name, {}, { class: "form-select" } %>
+  </div>
+
+  <div class="row d-flex justify-content-between">
+    <div class="col-auto mb-1">
+      <%= form.collection_select :unit_id, @units, :id, :name, {}, { class: "form-select" } %>
+    </div>
+    <div class="col-auto mb-1">
+      <%= form.text_field :amount, class: "form-control col-6" %>
+    </div>
+    <div class="col-auto">
+      <%= form.button type: :submit, class: "btn btn-success" do %>
+        <i class="fa-solid fa-check"></i>
+      <% end %>
+      <%= link_to @recipe, class: "btn btn-warning" do %>
+        <i class="fa-solid fa-times"></i>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>

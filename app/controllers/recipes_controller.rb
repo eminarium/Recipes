@@ -38,6 +38,7 @@ class RecipesController < ApplicationController
 
   def show
     @instructions = @recipe.instructions.order(:position)
+    @ingredients = @recipe.recipe_ingredients.includes(:ingredient, :unit)
     @lists = current_user && current_user.lists.any? ? current_user.lists.includes([:recipes]) : []
   end
 

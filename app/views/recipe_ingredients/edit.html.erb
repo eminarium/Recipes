@@ -1,0 +1,5 @@
+<h5>Edit Recipe Ingredient</h5>
+
+<%= turbo_frame_tag "edit_recipe_#{@recipe.id}_ingredient_#{@ingredient.id}" do %>
+  <%= render "edit_ingredient_form" %>
+<% end %>

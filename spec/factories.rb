@@ -1,4 +1,11 @@
 FactoryBot.define do
+  factory :recipe_ingredient do
+    recipe { nil }
+    ingredient { nil }
+    unit { nil }
+    amount { "9.99" }
+  end
+
   factory :unit do
     name { "MyString" }
   end

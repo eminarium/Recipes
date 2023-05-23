@@ -1,7 +1,7 @@
 <%= turbo_stream_from "instructions" %>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 mb-3">
 
     <% if current_user && current_user.id != @recipe.user.id %>
       <div class="row">
@@ -115,28 +115,57 @@
     </div>
   </div>
   
-  <div class="col-md-6 mt-3">
+  <div class="col-md-6">
 
-    <div class="row d-flex justify-content-around">
-      <p class="col display-6">Instructions</p>
-      <div class="col-auto">
-        <% if current_user && @recipe.user == current_user %>
-          <%= link_to new_recipe_instruction_path(@recipe),
-                      data: { turbo_frame: dom_id(Instruction.new) },
-                      class: "btn btn-primary mb-1" do %>
-            <i class="fa-solid fa-plus me-1"></i> New Instruction
+    <div class="border p-3">
+      <div class="row d-flex justify-content-around">
+        <p class="col display-6">Instructions</p>
+        <div class="col-auto">
+          <% if current_user && @recipe.user == current_user %>
+            <%= link_to new_recipe_instruction_path(@recipe),
+                        data: { turbo_frame: dom_id(Instruction.new) },
+                        class: "btn btn-primary mb-1" do %>
+              <i class="fa-solid fa-plus me-1"></i> New Instruction
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
+
+      <hr />
+      <%= turbo_frame_tag Instruction.new %>
+
+      <%= turbo_frame_tag "instructions" do %>
+        <%= "There are no instructions yet..." if @instructions.empty? %>
+        <%= render @instructions, partial: "instructions/instruction" %>
+      <% end %>                  
     </div>
 
-    <hr />
-    <%= turbo_frame_tag Instruction.new %>
+    
+    <div class="border p-3 mt-3 mb-3">
+      <div class="row d-flex justify-content-around">
+        <p class="col display-6">Ingredients</p>
+        <div class="col-auto">
+          <% if current_user && @recipe.user == current_user %>
+            <%= link_to new_recipe_ingredient_path(@recipe),
+                        data: { turbo_frame: "new_recipe_#{@recipe.id}_ingredient" },
+                        class: "btn btn-primary mb-1" do %>
+              <i class="fa-solid fa-plus me-1"></i> New Ingredient
+            <% end %>
+          <% end %>
+        </div>
+      </div>
 
-    <%= turbo_frame_tag "instructions" do %>
-      <%= "There are no instructions yet..." if @instructions.empty? %>
-      <%= render @instructions, partial: "instructions/instruction" %>
-    <% end %>                  
+      <hr />
+
+      <%= turbo_frame_tag "new_recipe_#{@recipe.id}_ingredient" %>
+
+      <%= turbo_frame_tag "ingredients" do %>
+        <%= "There are no ingredients yet..." if @ingredients.empty? %>
+        <%= render partial: "recipe_ingredients/ingredient", collection: @ingredients %>
+      <% end %>  
+
+    </div>
+
   </div>
 
 </div>
