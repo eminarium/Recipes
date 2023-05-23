@@ -46,7 +46,8 @@ Current project mainly makes use of Hotwire feature of Rails 7 and it is used in
 
 ## Guest can:
 - SIGN UP via (email / Gmail / Facebook / Twitter),
-- READ shared/all Recipes.
+- READ shared/all Recipes,
+- VIEW Recipes based on selected tag.
 
 ## User can:
 - SIGN IN via (email / Gmail / Facebook / Twitter),
