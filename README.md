@@ -57,6 +57,8 @@ Current project mainly makes use of Hotwire feature of Rails 7 and it is used in
 - FOLLOW / UNFOLLOW other Users,
 - CREATE / READ / UPDATE / DELETE its own Lists,
 - ADD / REMOVE other Users' Recipes to its own lists,
+- ADD / UPDATE / REMOVE instructions to its own recipes,
+- ADD / UPDATE / REMOVE ingredients to its own recipes.
 
 <br/>
 
