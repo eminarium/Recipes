@@ -18,6 +18,13 @@ RSpec.describe "Lists", type: :request do
 
   describe "GET /index" do
 
+    it "should redirect to login path when user not signed in" do
+      get lists_url
+      # expect(response).to have_http_status(:ok)
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+
     it "should get saved lists of a user when signed in" do
       sign_in user
       get lists_url
